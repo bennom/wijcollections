@@ -1,0 +1,41 @@
+{
+  "name": "wijcollections",
+  "description": "... be curious ...",
+  "version": "0.1.0",
+  "homepage": "https://github.com/webinfluenza/wijcollections",
+  "author": {
+    "name": "Benno Mielke",
+    "email": "look@webinfluenza.de",
+    "url": "www.webinfluenza.de"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/webinfluenza/wijcollections.git"
+  },
+  "bugs": {
+    "url": "https://github.com/webinfluenza/wijcollections/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/webinfluenza/wijcollections/blob/master/LICENSE-MIT"
+    }
+  ],
+  "main": "lib/wijcollections",
+  "engines": {
+    "node": ">= 0.6.0"
+  },
+  "scripts": {
+    "test": "grunt nodeunit"
+  },
+  "devDependencies": {
+    "grunt-contrib-concat": "~0.3.0",
+    "grunt-contrib-uglify": "~0.2.0",
+    "grunt-contrib-jshint": "~0.6.0",
+    "grunt-contrib-nodeunit": "~0.2.0",
+    "grunt-contrib-watch": "~0.4.0",
+    "grunt": "~0.4.0",
+    "matchdep": "~0.3.0"
+  },
+  "keywords": []
+}
