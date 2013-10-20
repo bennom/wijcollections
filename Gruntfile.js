@@ -38,8 +38,8 @@ module.exports = function( grunt ) {
             }
         },
 
-        nodeunit: {
-            files: ['test/**/*_test.js']
+        qunit: {
+            files: ['test/**/*.html']
         },
 
         jshint: {
@@ -72,16 +72,16 @@ module.exports = function( grunt ) {
 
             lib: {
                 files: '<%= jshint.lib.src %>',
-                tasks: ['jshint:lib', 'nodeunit']
+                tasks: ['jshint:lib']
             },
 
             test: {
                 files: '<%= jshint.test.src %>',
-                tasks: ['jshint:test', 'nodeunit']
+                tasks: ['jshint:test']
             }
         }
     } );
 
     // Default task.
-    grunt.registerTask( 'default', ['jshint', 'nodeunit', 'concat', 'uglify'] );
+    grunt.registerTask( 'default', ['jshint', 'qunit', 'concat', 'uglify'] );
 };
