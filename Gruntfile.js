@@ -72,7 +72,7 @@ module.exports = function( grunt ) {
 
             lib: {
                 files: '<%= jshint.lib.src %>',
-                tasks: ['jshint:lib']
+                tasks: ['jshint:lib', 'qunit']
             },
 
             test: {

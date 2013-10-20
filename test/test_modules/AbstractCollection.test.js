@@ -2,9 +2,10 @@
  * The actual test suite
  */
 
-define( ['wijcModules/AbstractCollection'], function( ac ) {
+define( ['wijcModules/AbstractCollection'], function( AbstractCollection ) {
     module( 'AbstractCollection', {
         setup: function() {
+            this.abstractCollection = new AbstractCollection();
             this.expectedAC = true;
         }
     } );
@@ -12,6 +13,6 @@ define( ['wijcModules/AbstractCollection'], function( ac ) {
     test( '[AC] return value', function() {
         expect( 1 );
 
-        equal( ac, true, 'should be true here' );
+        equal( this.abstractCollection.add(), true, 'should be true here' );
     } );
 } );
