@@ -24,6 +24,17 @@ define( [
             equal( this.abstractCollection.toString(), true, '[toString] should be true here' );
         } );
 
+        test( '[getHash]', 8, function() {
+            deepEqual( this.abstractCollection.getHash( 'foo' ), 101574, 'hash for \"foo\" is correct' );
+            deepEqual( this.abstractCollection.getHash( 'bar' ), 97299, 'hash for \"bar\" is correct' );
+            deepEqual( this.abstractCollection.getHash( ['baz', 'foo', 'bar', 'quux'] ), 1133304195, 'hash for Array is correct' );
+            deepEqual( this.abstractCollection.getHash( {'foo': 12, 'bar': 34} ), 1396304513, 'hash for Object is correct' );
+            deepEqual( this.abstractCollection.getHash( true ), 3569038, 'hash for Boolean is correct' );
+            deepEqual( this.abstractCollection.getHash( 123456 ), 1450575459, 'hash for Number (int) is correct' );
+            deepEqual( this.abstractCollection.getHash( 123.56 ), 1450569693, 'hash for Number (double) is correct' );
+            deepEqual( this.abstractCollection.getHash( new Date( '2013-10-22' ) ), 503512411, 'hash for Date is correct' );
+        } );
+
         module( 'List', {
             setup: function() {
                 this.list = new List();
@@ -42,9 +53,12 @@ define( [
 
         test( '[add]', 3, function() {
             equal( this.list.add( 'foo' ), true, 'adding an element correctly' );
-            equal( this.list.add(), false, 'adding element failed - should be false' );
+            equal( this.list.add(), null, 'adding element failed - should be null' );
 
             deepEqual( this.list.list, this.expectedLists.add, 'list elements are in the right position' );
+
+            this.list.add( {'foo': 1, 'bar': 'baz'} );
+            this.list.add( [1, 2, 3, 4] );
         } );
 
         test( '[addAt]', 5, function() {
@@ -59,7 +73,7 @@ define( [
         test( '[get]', 4, function() {
             equal( this.exampleList.get( 0 ), 'foo', 'got the right element' );
             equal( this.exampleList.get( 1 ), 'bar', 'got the right element' );
-            deepEqual( this.exampleList.get( 5 ), false, 'index out of bounds - should be false' );
+            deepEqual( this.exampleList.get( 5 ), null, 'index out of bounds - should be null' );
             equal( this.exampleList.list[1], 'bar', 'elements still present in the list' );
         } );
 
@@ -74,10 +88,15 @@ define( [
             equal( this.list.size(), 2, 'list has two elements' );
         } );
 
-        test( '[clear]', 1, function() {
+        test( '[clear]', 2, function() {
+            var emptyList = new List(); // reference object
+
+            // increment the internal counter for test
+            this.exampleList.incrementBaseObjectCounter();
             this.exampleList.clear();
 
             equal( this.exampleList.size(), 0, 'list cleared' )
+            equal( this.exampleList.baseObject, emptyList.baseObject, 'internal baseObject reset' )
         } );
 
         test( '[contains]', 3, function() {
