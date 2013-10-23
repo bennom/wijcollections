@@ -58,7 +58,10 @@ define( [
             deepEqual( this.list.list, this.expectedLists.add, 'list elements are in the right position' );
 
             this.list.add( {'foo': 1, 'bar': 'baz'} );
+            this.list.add( {'bar': 1, 'foo': 'baz'} );
             this.list.add( [1, 2, 3, 4] );
+
+            console.warn( this.list.list, this.list.baseObject );
         } );
 
         test( '[addAt]', 5, function() {
@@ -92,7 +95,6 @@ define( [
             var emptyList = new List(); // reference object
 
             // increment the internal counter for test
-            this.exampleList.incrementBaseObjectCounter();
             this.exampleList.clear();
 
             equal( this.exampleList.size(), 0, 'list cleared' )
