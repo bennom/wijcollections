@@ -133,7 +133,8 @@ define( [
             this.exampleList.clear();
 
             equal( this.exampleList.size(), 0, 'list cleared' )
-            equal( this.exampleList.baseObject, emptyList.baseObject, 'internal baseObject reset' )
+            deepEqual( this.exampleList.baseObject, emptyList.baseObject, 'internal baseObject reset' )
+
         } );
 
         test( '[contains]', 6, function() {
@@ -158,25 +159,25 @@ define( [
             deepEqual( emptyList.isEmpty(), true, 'Empty list is empty :-)' );
         } );
 
-        test( '[remove]', 7, function() {
-            deepEqual( this.mixedList.remove( 'foo' ), true, 'Removed a element' );
-            deepEqual( this.mixedList.remove( 22 ), true, 'Removed a element' );
-            deepEqual( this.mixedList.remove( {'bar': 1, 'foo': 'baz'} ), true, 'Removed a element' );
-            deepEqual( this.mixedList.remove( ['baz', 'foo', 'bar'] ), true, 'Removed a element' );
-            deepEqual( this.mixedList.remove( new Date( 2013, 9, 24 ) ), true, 'Removed a element' );
-            deepEqual( this.mixedList.remove( false ), true, 'Removed a element' );
-            deepEqual( this.mixedList.size(), 0, 'List is empty now' );
+        test( '[remove]', 8, function() {
+            var mixedList = new List(),
+                emptyList = new List();
 
-            console.warn( this.mixedList.list );
-            console.warn( this.mixedList.baseObject );
-            /**
-            this.mixedList.add( 'foo' );
-            this.mixedList.add( 22 );
-            this.mixedList.add( {'bar': 1, 'foo': 'baz'} );
-            this.mixedList.add( ['baz', 'foo', 'bar'] );
-            this.mixedList.add( new Date( 2013, 9, 24 ) );
-            this.mixedList.add( false );
-             */
+            mixedList.add( 'foo' );
+            mixedList.add( 22 );
+            mixedList.add( {'bar': 1, 'foo': 'baz'} );
+            mixedList.add( ['baz', 'foo', 'bar'] );
+            mixedList.add( new Date( 2013, 9, 24 ) );
+            mixedList.add( false );
+
+            deepEqual( mixedList.remove( 'foo' ), true, 'Removed a element' );
+            deepEqual( mixedList.remove( 22 ), true, 'Removed a element' );
+            deepEqual( mixedList.remove( {'bar': 1, 'foo': 'baz'} ), true, 'Removed a element' );
+            deepEqual( mixedList.remove( ['baz', 'foo', 'bar'] ), true, 'Removed a element' );
+            deepEqual( mixedList.remove( new Date( 2013, 9, 24 ) ), true, 'Removed a element' );
+            deepEqual( mixedList.remove( false ), true, 'Removed a element' );
+            deepEqual( mixedList.size(), 0, 'List is empty now' );
+            deepEqual( mixedList.baseObject, emptyList.baseObject, 'List baseObject is empty' );
         } );
     }
 );
