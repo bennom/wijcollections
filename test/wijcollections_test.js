@@ -4,7 +4,7 @@
     QUnit.config.autostart = false;
 
     // run the tests when the module is loaded
-    require( ['test_modules/AbstractCollection.test.js'], function() {
+    require( ['test_modules/AbstractCollection.test.js', 'test_modules/List.test.js'], function() {
         QUnit.start();
     } );
 }( jQuery ) );
