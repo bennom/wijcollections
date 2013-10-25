@@ -1,3 +1,3 @@
 # wijcollections
 
-... be curious ...
+... be curious ..
