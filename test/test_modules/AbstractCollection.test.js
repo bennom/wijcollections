@@ -13,7 +13,7 @@ define( [
             }
         } );
 
-        test( 'Basic method existing check', 8, function() {
+        test( '[methods]', 8, function() {
             equal( this.abstractCollection.add(), false, '[add] should be false here' );
             equal( this.abstractCollection.get(), false, '[get] should be false here' );
             equal( this.abstractCollection.clear(), true, '[clear] should be true here' );
@@ -43,7 +43,12 @@ define( [
             } catch( e ) {
                 deepEqual( e.name, "TypeError", "TypeError thrown when a function is passed." );
             }
-            // throws( , TypeError, "Throws expception when function is passed as parameter" );
+        } );
+
+        test( '[sortObjectByKeys]', 3, function() {
+            deepEqual( this.abstractCollection.sortObjectByKeys( {'foo': 'baz', 'bar': 1, 123: 'har'} ), {123: "har", bar: 1, foo: "baz"}, 'Object sorted correctly' );
+            deepEqual( this.abstractCollection.sortObjectByKeys(), null, 'Non object - returned null' );
+            deepEqual( this.abstractCollection.sortObjectByKeys( [1, '2', {'foo': 'bar'}] ), null, 'Non object - returned null' );
         } );
 
         module( 'List', {
