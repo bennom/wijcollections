@@ -89,7 +89,7 @@ define( [
             deepEqual( this.list.list, refereneList, 'list elements are in the right position' );
         } );
 
-        test( '[addAt]', 8, function() {
+        test( '[addAt]', 14, function() {
             var resultReference = ["4273dd148172616f335e01fa1a17ce4e", "baz", "foo", "bb9f0348505124479bfd044dae6b5f14", "bar", "quux", "7bd4c63ba2cdadb060f5730e7bf66a30"];
 
             equal( this.list.addAt( 'bar' ), true, 'adding element without position (at the end)' );
@@ -100,25 +100,49 @@ define( [
             equal( this.list.addAt( [1, 2, 3, 4] ), true, 'adding element at position 3' );
             equal( this.list.addAt( new Date( 2013, 9, 22 ), 0 ), true, 'adding element at position 3' );
 
+            // adding some duplicates
+            equal( this.list.addAt( {'bar': 1, 'foo': 'baz'}, 2 ), true, '[Duplicate] adding element (position not relevant)' );
+            equal( this.list.addAt( {'bar': 1, 'foo': 'baz'}, 2 ), true, '[Duplicate] adding element (position not relevant)' );
+            equal( this.list.addAt( [1, 2, 3, 4], 1 ), true, '[Duplicate] adding element (position not relevant)' );
+            equal( this.list.addAt( new Date( 2013, 9, 22 ), 3 ), true, '[Duplicate] adding element (position not relevant)' );
+
             deepEqual( this.list.list, resultReference, 'list elements are in the right position' );
+            deepEqual( this.list.size(), 7, 'size() returns valid number of elements in the Array' );
+            deepEqual( this.list.size( true ), 11, 'Duplicate counter returns valid number' );
         } );
 
-        test( '[get]', 4, function() {
+        test( '[get]', 11, function() {
             equal( this.exampleList.get( 0 ), 'foo', 'got the right element' );
             equal( this.exampleList.get( 1 ), 'bar', 'got the right element' );
-            deepEqual( this.exampleList.get( 5 ), null, 'index out of bounds - should be null' );
             equal( this.exampleList.list[1], 'bar', 'elements still present in the list' );
+            deepEqual( this.exampleList.get( 5 ), null, 'index out of bounds - should be null' );
+
+            deepEqual( this.mixedList.get( 0 ), 'foo', 'got the right element' );
+            deepEqual( this.mixedList.get( 1 ), 22, 'got the right element' );
+            deepEqual( this.mixedList.get( 2 ), {'bar': 1, 'foo': 'baz'}, 'got the right element' );
+            deepEqual( this.mixedList.get( 3 ), ['baz', 'foo', 'bar'], 'got the right element' );
+            deepEqual( this.mixedList.get( 4 ), new Date( 2013, 9, 24 ), 'got the right element' );
+            deepEqual( this.mixedList.get( 5 ), false, 'got the right element' );
+            deepEqual( this.mixedList.get( 6 ), null, 'got the right element' );
         } );
 
 
-        test( '[size]', 3, function() {
-            equal( this.list.size(), 0, 'list is empty' );
+        test( '[size]', 5, function() {
+            deepEqual( this.list.size(), 0, 'list is empty' );
 
             this.list.add( 'foo' );
-            equal( this.list.size(), 1, 'list has one element' );
+            deepEqual( this.list.size(), 1, 'list has one element' );
 
             this.list.add( 'bar' );
-            equal( this.list.size(), 2, 'list has two elements' );
+            deepEqual( this.list.size(), 2, 'list has two elements' );
+
+            this.mixedList.add( 'foo' );
+            this.mixedList.add( {'bar': 1, 'foo': 'baz'} );
+            this.mixedList.add( {'bar': 1, 'foo': 'baz'} );
+            this.mixedList.add( ['baz', 'foo', 'bar'] );
+
+            deepEqual( this.mixedList.size(), 7, 'size() returns valid number of elements in the Array' );
+            deepEqual( this.mixedList.size( true ), 10, 'Duplicate counter returns valid number' );
         } );
 
         test( '[indexOf]', 7, function() {
@@ -165,24 +189,16 @@ define( [
         } );
 
         test( '[remove]', 8, function() {
-            var mixedList = new List(),
-                emptyList = new List();
+            var emptyList = new List();
 
-            mixedList.add( 'foo' );
-            mixedList.add( 22 );
-            mixedList.add( {'bar': 1, 'foo': 'baz'} );
-            mixedList.add( ['baz', 'foo', 'bar'] );
-            mixedList.add( new Date( 2013, 9, 24 ) );
-            mixedList.add( false );
-
-            deepEqual( mixedList.remove( 'foo' ), true, 'Removed a element' );
-            deepEqual( mixedList.remove( 22 ), true, 'Removed a element' );
-            deepEqual( mixedList.remove( {'bar': 1, 'foo': 'baz'} ), true, 'Removed a element' );
-            deepEqual( mixedList.remove( ['baz', 'foo', 'bar'] ), true, 'Removed a element' );
-            deepEqual( mixedList.remove( new Date( 2013, 9, 24 ) ), true, 'Removed a element' );
-            deepEqual( mixedList.remove( false ), true, 'Removed a element' );
-            deepEqual( mixedList.size(), 0, 'List is empty now' );
-            deepEqual( mixedList.baseObject, emptyList.baseObject, 'List baseObject is empty' );
+            deepEqual( this.mixedList.remove( 'foo' ), true, 'Removed a element' );
+            deepEqual( this.mixedList.remove( 22 ), true, 'Removed a element' );
+            deepEqual( this.mixedList.remove( {'bar': 1, 'foo': 'baz'} ), true, 'Removed a element' );
+            deepEqual( this.mixedList.remove( ['baz', 'foo', 'bar'] ), true, 'Removed a element' );
+            deepEqual( this.mixedList.remove( new Date( 2013, 9, 24 ) ), true, 'Removed a element' );
+            deepEqual( this.mixedList.remove( false ), true, 'Removed a element' );
+            deepEqual( this.mixedList.size(), 0, 'List is empty now' );
+            deepEqual( this.mixedList.baseObject, emptyList.baseObject, 'List baseObject is empty' );
         } );
 
         test( '[toString]', 1, function() {
