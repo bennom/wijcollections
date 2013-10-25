@@ -184,5 +184,9 @@ define( [
             deepEqual( mixedList.size(), 0, 'List is empty now' );
             deepEqual( mixedList.baseObject, emptyList.baseObject, 'List baseObject is empty' );
         } );
+
+        test( '[toString]', 1, function() {
+            deepEqual( this.mixedList.toString(), "foo,b6d767d2f8ed5d21a44b0e5886680cb9,bb9f0348505124479bfd044dae6b5f14,7641a52cc856c97d63f5b1b306896fc1,2a836fc743df1093df08e60055474916,68934a3e9455fa72420237eb05902327", "return the right String" );
+        } );
     }
 );
