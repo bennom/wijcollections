@@ -1,4 +1,4 @@
-define( ['wijcModules/List'], function( List ) {
+define( ['wijcModules/public/List'], function( List ) {
     module( 'List', {
         setup: function() {
             this.list = new List();
@@ -24,7 +24,7 @@ define( ['wijcModules/List'], function( List ) {
     } );
 
     test( '[add]', 8, function() {
-        var refereneList = ["foo", "bb9f0348505124479bfd044dae6b5f14", "37693cfc748049e45d87b8c7d8b9aacd", "7bd4c63ba2cdadb060f5730e7bf66a30", "2a836fc743df1093df08e60055474916", "68934a3e9455fa72420237eb05902327"];
+        var referenceList = ["foo", "bb9f0348505124479bfd044dae6b5f14", "37693cfc748049e45d87b8c7d8b9aacd", "7bd4c63ba2cdadb060f5730e7bf66a30", "2a836fc743df1093df08e60055474916", "68934a3e9455fa72420237eb05902327"];
 
         equal( this.list.add( 'foo' ), true, 'adding an element correctly' );
         equal( this.list.add(), null, 'adding element failed - should be null' );
@@ -34,7 +34,7 @@ define( ['wijcModules/List'], function( List ) {
         equal( this.list.add( new Date( 2013, 9, 24 ) ), true, 'adding Date Object element' );
         equal( this.list.add( false ), true, 'adding Boolean element' );
 
-        deepEqual( this.list.list, refereneList, 'list elements are in the right position' );
+        deepEqual( this.list.list, referenceList, 'list elements are in the right position' );
     } );
 
     test( '[addAt]', 14, function() {
@@ -73,7 +73,6 @@ define( ['wijcModules/List'], function( List ) {
         deepEqual( this.mixedList.get( 5 ), false, 'got the right element' );
         deepEqual( this.mixedList.get( 6 ), null, 'got the right element' );
     } );
-
 
     test( '[size]', 5, function() {
         deepEqual( this.list.size(), 0, 'list is empty' );

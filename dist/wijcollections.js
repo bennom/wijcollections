@@ -1,4 +1,4 @@
-/*! wijcollections - v0.2.0 - 2013-10-26
+/*! wijcollections - v1.0.0 - 2013-10-26
 * https://github.com/webinfluenza/wijcollections
 * Copyright (c) 2013 Benno Mielke; Licensed MIT */
 ;( function( undefined ) {
@@ -12,7 +12,7 @@
         }
     } );
 
-    require( ['wijcModules/List'], function( List ) {
+    require( ['wijcModules/public/List'], function( List ) {
         var foo = new List();
 
         foo.add( 'bar' );

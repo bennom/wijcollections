@@ -2,7 +2,7 @@
  * The actual test suite
  */
 
-define( ['wijcModules/AbstractCollection'], function( AbstractCollection ) {
+define( ['wijcModules/private/AbstractCollection'], function( AbstractCollection ) {
     module( 'AbstractCollection', {
         setup: function() {
             this.abstractCollection = new AbstractCollection();
