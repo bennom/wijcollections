@@ -137,16 +137,23 @@ define( ['wijcModules/List'], function( List ) {
     } );
 
     test( '[remove]', 8, function() {
-        var emptyList = new List();
+        var resultListReference = new List();
+
+        // add a duplicate entry
+        this.mixedList.add( {'bar': 1, 'foo': 'baz'} );
 
         deepEqual( this.mixedList.remove( 'foo' ), true, 'Removed a element' );
         deepEqual( this.mixedList.remove( 22 ), true, 'Removed a element' );
-        deepEqual( this.mixedList.remove( {'bar': 1, 'foo': 'baz'} ), true, 'Removed a element' );
+        deepEqual( this.mixedList.remove( {'bar': 1, 'foo': 'baz'} ), true, 'Removed a duplicate element' );
         deepEqual( this.mixedList.remove( ['baz', 'foo', 'bar'] ), true, 'Removed a element' );
         deepEqual( this.mixedList.remove( new Date( 2013, 9, 24 ) ), true, 'Removed a element' );
         deepEqual( this.mixedList.remove( false ), true, 'Removed a element' );
-        deepEqual( this.mixedList.size(), 0, 'List is empty now' );
-        deepEqual( this.mixedList.baseObject, emptyList.baseObject, 'List baseObject is empty' );
+        deepEqual( this.mixedList.size(), 1, 'List should contain one Object' );
+
+        // one duplicate should be over at the end
+        resultListReference.add( {'bar': 1, 'foo': 'baz'} );
+
+        deepEqual( this.mixedList.baseObject, resultListReference.baseObject, 'List baseObject is empty' );
     } );
 
     test( '[toString]', 1, function() {

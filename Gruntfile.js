@@ -38,6 +38,19 @@ module.exports = function( grunt ) {
             }
         },
 
+        yuidoc: {
+            compile: {
+                name: '<%= pkg.name %>',
+                description: '<%= pkg.description %>',
+                version: '<%= pkg.version %>',
+                url: '<%= pkg.homepage %>',
+                options: {
+                    paths: 'lib/',
+                    outdir: 'documentation/'
+                }
+            }
+        },
+
         qunit: {
             files: ['test/**/*.html']
         },
@@ -64,7 +77,7 @@ module.exports = function( grunt ) {
 
             lib: {
                 files: '<%= jshint.lib.src %>',
-                tasks: ['jshint:lib', 'qunit']
+                tasks: ['jshint:lib', 'qunit', 'yuidoc']
             },
 
             test: {
