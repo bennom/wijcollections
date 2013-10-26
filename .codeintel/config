@@ -1,7 +1,0 @@
-{
-    "JavaScript": {
-        "javascriptExtraPaths": [
-            "../lib"
-        ]
-    }
-}
