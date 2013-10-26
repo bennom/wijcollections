@@ -18,6 +18,6 @@ to generate the documentation. The documenation will not be commited in this rep
 ## Release History
 Date | Version | Release Notes
 :------------|:-------:|:-----
-2013-07-25 | 0.2.1 | ```List```: duplicate handling, fixes for ```remove()```, ```add()```, ```addAt()```, splitting module tests
-2013-07-23 | 0.2.0 | ```List``` implementation
-2013-07-18 | 0.1.0 | initial version
+25.10.13 | 0.2.1 | ```List```: duplicate handling, fixes for ```remove()```, ```add()```, ```addAt()```, splitting module tests
+23.10.13 | 0.2.0 | ```List``` implementation
+18.10.13 | 0.1.0 | initial version
