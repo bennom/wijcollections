@@ -4,10 +4,16 @@ A Java like Collection Framework.
 
 A detailed description and introduction is in progress
 
-## Actually implemented collections ##
+### Actually implemented collections
 * List, [Documentation](https://github.com/webinfluenza/wijcollections/wiki/List "List API Documentation")
 
-## Generate Documentation ##
+### Demo
+
+If you download or clone this repository and you can use the *test/wijcollections_test.html* file for playing around.
+This file includes the *lib/wijcollections.js*. There you can see how to use the collection and you can
+play around with it. Have fun.
+
+### Generate Documentation
 If you have cloned or downloaded this repo, just run
 ```
 npm install
