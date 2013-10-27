@@ -5,7 +5,7 @@ A Java like Collection Framework.
 A detailed description and introduction is in progress
 
 ## Actually implemented collections ##
-* List (Wiki entry will be written as soon as possible)
+* List, [Documentation](https://github.com/webinfluenza/wijcollections/wiki/List "List API Documentation")
 
 ## Generate Documentation ##
 If you have cloned or downloaded this repo, just run
