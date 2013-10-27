@@ -51,6 +51,28 @@ module.exports = function( grunt ) {
             }
         },
 
+        clean: {
+            rjsOutput: ['dist/modules']
+        },
+
+        requirejs: {
+            compile: {
+                options: {
+                    baseUrl: 'lib/',
+                    dir: 'dist/',
+                    optimize: 'uglify',
+                    modules: [
+                        {name: 'modules/private/AbstractCollection'},
+                        {name: 'modules/private/ListObject'},
+                        {name: 'modules/public/List'},
+                        {name: 'modules/public/PolyfillFunctions'},
+                        {name: 'modules/utils/wiMD5'}
+                    ],
+                    findNestedDependencies: true
+                }
+            }
+        },
+
         qunit: {
             files: ['test/**/*.html']
         },
@@ -88,5 +110,5 @@ module.exports = function( grunt ) {
     } );
 
     // Default task.
-    grunt.registerTask( 'default', ['jshint', 'qunit', 'concat', 'uglify'] );
+    grunt.registerTask( 'default', ['jshint', 'qunit', 'clean:rjsOutput', 'requirejs'] );
 };

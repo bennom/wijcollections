@@ -1,33 +1,9 @@
-/*! wijcollections - v1.0.0 - 2013-10-26
-* https://github.com/webinfluenza/wijcollections
-* Copyright (c) 2013 Benno Mielke; Licensed MIT */
-;( function( undefined ) {
-    'use strict';
+/*
+ * wijcollections
+ * https://github.com/webinfluenza/wijcollections
+ *
+ * Copyright (c) 2013 Benno Mielke
+ * Licensed under the MIT license.
+ */
 
-    require.config( {
-        baseUrl: "../",
-        paths: {
-            'wijcModules': 'lib/modules',
-            'md5': 'lib/modules/utils'
-        }
-    } );
-
-    require( ['wijcModules/public/List'], function( List ) {
-        var foo = new List();
-
-        foo.add( 'bar' );
-        foo.add( {'baz': 1} );
-
-        console.warn( 'List contains ' + foo.size() + ' elements:' );
-        console.warn( foo.toString() );
-        console.warn( 'The object is:', foo.get( 1 ) );
-
-        // adding a duplicate entry
-        foo.add( {'baz': 1} );
-
-        // iterating unique entries
-        for( var i = 0, iMax = foo.size(); i < iMax; i++ ) {
-            console.warn( 'unique entry', foo.get( i ) );
-        }
-    } );
-}() );
+(function(e){require.config({baseUrl:"../",paths:{wijcModules:"lib/modules",md5:"lib/modules/utils"}}),require(["wijcModules/public/List"],function(e){var t=new e;t.add("bar"),t.add({baz:1}),console.warn("List contains "+t.size()+" elements:"),console.warn(t.toString()),console.warn("The object is:",t.get(1)),t.add({baz:1});for(var n=0,r=t.size();n<r;n++)console.warn("unique entry",t.get(n))})})();
