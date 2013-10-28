@@ -24,6 +24,7 @@ to generate the documentation. The documenation will not be commited in this rep
 ## Release History
 Date | Version | Release Notes
 :------------|:-------:|:-----
+28.10.13 | 1.1.0 | ```List``` implementation of ```set()```
 27.10.13 | 1.0.0 | ```List``` production ready release
 25.10.13 | 0.2.1 | ```List```: duplicate handling, fixes for ```remove()```, ```add()```, ```addAt()```, splitting module tests
 23.10.13 | 0.2.0 | ```List``` implementation
