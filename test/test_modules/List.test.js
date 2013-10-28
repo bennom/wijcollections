@@ -155,6 +155,29 @@ define( ['wijcModules/public/List'], function( List ) {
         deepEqual( this.mixedList.baseObject, resultListReference.baseObject, 'List baseObject is empty' );
     } );
 
+    test( '[set]', 10, function() {
+        var resultList = ["46351a89839fb1709e28c5c3853baf5c", "f7177163c833dff4b38fc8d2872f1ec6", "097ada11b92e404e6812ea59a209e3bb", "f1e46f328e6decd56c64dd5e761dc2b7", "1664496e459b674bea3743e7a5cb5304", "b326b5062b2f0e69046810717534cb09"];
+
+        // adding some basic duplicates first
+        this.mixedList.add( 22 );
+        this.mixedList.add( {'bar': 1, 'foo': 'baz'} );
+        this.mixedList.add( ['baz', 'foo', 'bar'] );
+
+        deepEqual( this.mixedList.set( 'bar', 0 ), 'foo', 'replaced Strings' );
+        deepEqual( this.mixedList.set( 44, 1 ), 22, 'replaced Number' );
+        deepEqual( this.mixedList.set( {'baz': 3}, 2 ), {'bar': 1, 'foo': 'baz'}, 'replaced Object' );
+        deepEqual( this.mixedList.set( [1, 2, 3], 3 ), ['baz', 'foo', 'bar'], 'replaced Array' );
+        deepEqual( this.mixedList.set( new Date( 2013, 9, 28 ), 4 ), new Date( 2013, 9, 24 ), 'replaced Date object' );
+        deepEqual( this.mixedList.set( true, 5 ), false, 'replaced Boolean' );
+        deepEqual( this.mixedList.set( {'baz': 5, 'quux': 'foo'}, 0 ), 'bar', 'replaced String with Object' );
+
+        // adding a duplicate and check that the duplicate is known
+        deepEqual( this.mixedList.add( {'baz': 5, 'quux': 'foo'} ), true, 'added duplicate' );
+        deepEqual( this.mixedList.listObject.listObject.duplicateCnt, 1, 'identified duplicate correctly' );
+
+        deepEqual( this.mixedList.list, resultList, 'Result Array equals the expected one' );
+    } );
+
     test( '[toString]', 1, function() {
         deepEqual( this.mixedList.toString(), "foo,b6d767d2f8ed5d21a44b0e5886680cb9,bb9f0348505124479bfd044dae6b5f14,7641a52cc856c97d63f5b1b306896fc1,2a836fc743df1093df08e60055474916,68934a3e9455fa72420237eb05902327", "return the right String" );
     } );
