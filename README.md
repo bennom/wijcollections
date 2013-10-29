@@ -13,6 +13,11 @@ If you download or clone this repository and you can use the *test/wijcollection
 This file includes the *lib/wijcollections.js*. There you can see how to use the collection and you can
 play around with it. Have fun.
 
+### Non RequireJS Version
+
+If you want to use the wiJCollections without RequireJS, just switch to the [not-required](https://github.com/webinfluenza/wijcollections/tree/not-required "Go to not-required branch")
+branch. There's also a demo included. Also, you can include the *dist/wijcollections.min.js* in your project and get startet.
+
 ### Generate Documentation
 If you have cloned or downloaded this repo, just run
 ```
