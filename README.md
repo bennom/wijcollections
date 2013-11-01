@@ -19,6 +19,7 @@ Include one of the files in your project and that's it.
 
 ### Actually implemented collections
 * List, [Documentation](https://github.com/webinfluenza/wijcollections/wiki/List "List API Documentation")
+* Stack, [Documentation](https://github.com/webinfluenza/wijcollections/wiki/Stack "Stack API Documentation")
 
 ### Demo
 
@@ -37,5 +38,6 @@ to generate the documentation. The documenation will not be commited in this rep
 ## Release History
 Date | Version | Release Notes
 :------------|:-------:|:-----
+01.11.13 | 1.2.0 | introducing ```Stack``` class
 28.10.13 | 1.1.0 | ```List``` implementation of ```set()```
 27.10.13 | 1.0.0 | ```List``` production ready release

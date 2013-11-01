@@ -48,13 +48,12 @@ define( ['wijcModules/private/AbstractCollection'], function( AbstractCollection
     } );
 
     test( '[needsHashing]', 7, function() {
-        console.warn( this.abstractCollection );
         equal( this.abstractCollection.needsHashing( 'foo' ), false, 'String - no hashing' );
         equal( this.abstractCollection.needsHashing( {'bar': 1, 'foo': 'baz'} ), true, 'Object - hashing' );
-        equal( this.abstractCollection.needsHashing( 23 ), true, 'Number - hashing' );
+        equal( this.abstractCollection.needsHashing( 23 ), false, 'Number - no hashing' );
         equal( this.abstractCollection.needsHashing( [1, 2, 3, 4] ), true, 'Array - hashing' );
         equal( this.abstractCollection.needsHashing( new Date( 2013, 9, 24 ) ), true, 'Date - hashing' );
-        equal( this.abstractCollection.needsHashing( false ), true, 'Boolean - hashing' );
+        equal( this.abstractCollection.needsHashing( false ), false, 'Boolean - no hashing' );
         equal( this.abstractCollection.needsHashing(), null, 'undefined returns null' );
     } );
 } );

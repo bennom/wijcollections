@@ -1,7 +1,7 @@
 {
   "name": "wijcollections",
   "description": "A Java like collection framework.",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "homepage": "https://github.com/webinfluenza/wijcollections",
   "author": {
     "name": "Benno Mielke",
