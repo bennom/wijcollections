@@ -65,6 +65,7 @@ module.exports = function( grunt ) {
                         {name: 'modules/private/AbstractCollection'},
                         {name: 'modules/private/ListObject'},
                         {name: 'modules/public/List'},
+                        {name: 'modules/public/Stack'},
                         {name: 'modules/public/PolyfillFunctions'},
                         {name: 'modules/utils/wiMD5'}
                     ],
