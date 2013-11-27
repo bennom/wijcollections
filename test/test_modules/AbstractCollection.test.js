@@ -33,12 +33,7 @@ define( ['wijcModules/private/AbstractCollection'], function( AbstractCollection
         deepEqual( this.abstractCollection.getHash( new Date( 2013, 9, 22 ) ), '4273dd148172616f335e01fa1a17ce4e', 'hash for Date is correct' );
         deepEqual( this.abstractCollection.getHash(), null, 'return value for undefined was null' );
         deepEqual( this.abstractCollection.getHash( null ), null, 'return value for null was null' );
-
-        try {
-            this.abstractCollection.getHash( foo );
-        } catch( e ) {
-            deepEqual( e.name, "TypeError", "TypeError thrown when a function is passed." );
-        }
+        deepEqual( this.abstractCollection.getHash( foo ), null, 'return value for function was null' );
     } );
 
     test( '[sortObjectByKeys]', 3, function() {

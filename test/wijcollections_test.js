@@ -5,6 +5,7 @@
 
     // run the tests when the module is loaded
     require( [
+        'test_modules/HashMap.test.js',
         'test_modules/AbstractCollection.test.js',
         'test_modules/List.test.js',
         'test_modules/Stack.test.js'], function() {
