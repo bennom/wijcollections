@@ -11,11 +11,16 @@
     <link rel="stylesheet" href="assets/qunit/qunit-1.12.0.css" media="screen">
     <script src="assets/qunit/qunit-1.12.0.js"></script>
 
+
     <!-- require.js CDN -->
     <script src="assets/vendor/require.min.js"></script>
 
     <!-- Load local lib and tests. -->
     <script src="../lib/wijcollections.js"></script>
+    <!-- Blanket
+    -->
+    <script src="../third_party/blanket/blanket.js" data-cover-flags="existingRequireJS branchTracking" data-cover-only="lib/modules/" data-cover-never="['third_party','test']"></script>
+
     <script src="wijcollections_test.js"></script>
 
     <!-- Removing access to jQuery and $. But it'll still be available as _$, if
