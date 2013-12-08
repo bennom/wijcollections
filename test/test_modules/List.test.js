@@ -23,8 +23,8 @@ define( ['wijcModules/public/List'], function( List ) {
         }
     } );
 
-    test( '[add]', 8, function() {
-        var referenceList = ["foo", "bb9f0348505124479bfd044dae6b5f14", "37693cfc748049e45d87b8c7d8b9aacd", "7bd4c63ba2cdadb060f5730e7bf66a30", "2a836fc743df1093df08e60055474916", "68934a3e9455fa72420237eb05902327"];
+    test( '[add]', function() {
+        var referenceList = ["foo", "bb9f0348505124479bfd044dae6b5f14", 23, "7bd4c63ba2cdadb060f5730e7bf66a30", "2a836fc743df1093df08e60055474916", false];
 
         equal( this.list.add( 'foo' ), true, 'adding an element correctly' );
         equal( this.list.add(), null, 'adding element failed - should be null' );
@@ -33,7 +33,6 @@ define( ['wijcModules/public/List'], function( List ) {
         equal( this.list.add( [1, 2, 3, 4] ), true, 'adding Array element' );
         equal( this.list.add( new Date( 2013, 9, 24 ) ), true, 'adding Date Object element' );
         equal( this.list.add( false ), true, 'adding Boolean element' );
-
         deepEqual( this.list.list, referenceList, 'list elements are in the right position' );
     } );
 
@@ -156,7 +155,7 @@ define( ['wijcModules/public/List'], function( List ) {
     } );
 
     test( '[set]', 10, function() {
-        var resultList = ["46351a89839fb1709e28c5c3853baf5c", "f7177163c833dff4b38fc8d2872f1ec6", "097ada11b92e404e6812ea59a209e3bb", "f1e46f328e6decd56c64dd5e761dc2b7", "1664496e459b674bea3743e7a5cb5304", "b326b5062b2f0e69046810717534cb09"];
+        var resultList = ["46351a89839fb1709e28c5c3853baf5c", 44, "097ada11b92e404e6812ea59a209e3bb", "f1e46f328e6decd56c64dd5e761dc2b7", "1664496e459b674bea3743e7a5cb5304", true, 22];
 
         // adding some basic duplicates first
         this.mixedList.add( 22 );
@@ -179,6 +178,6 @@ define( ['wijcModules/public/List'], function( List ) {
     } );
 
     test( '[toString]', 1, function() {
-        deepEqual( this.mixedList.toString(), "foo,b6d767d2f8ed5d21a44b0e5886680cb9,bb9f0348505124479bfd044dae6b5f14,7641a52cc856c97d63f5b1b306896fc1,2a836fc743df1093df08e60055474916,68934a3e9455fa72420237eb05902327", "return the right String" );
+        deepEqual( this.mixedList.toString(), "foo,22,bb9f0348505124479bfd044dae6b5f14,7641a52cc856c97d63f5b1b306896fc1,2a836fc743df1093df08e60055474916,false", "return the right String" );
     } );
 } );

@@ -106,23 +106,13 @@ module.exports = function( grunt ) {
         },
 
         watch: {
-            gruntfile: {
-                files: '<%= jshint.gruntfile.src %>',
-                tasks: ['jshint:gruntfile']
-            },
-
             lib: {
                 files: '<%= jshint.lib.src %>',
-                tasks: ['jshint:lib', 'qunit', 'yuidoc']
-            },
-
-            test: {
-                files: '<%= jshint.test.src %>',
-                tasks: ['jshint:test']
+                tasks: ['jshint:lib', 'qunit']
             }
         }
     } );
 
     // Default task.
-    grunt.registerTask( 'default', ['jshint', 'qunit', 'clean:rjsOutput', 'requirejs'] );
+    grunt.registerTask( 'default', ['jshint', 'qunit', 'yuidoc', 'clean:rjsOutput', 'requirejs'] );
 };

@@ -9,18 +9,18 @@ define( ['wijcModules/private/AbstractCollection'], function( AbstractCollection
         }
     } );
 
-    test( '[methods]', 8, function() {
-        equal( this.abstractCollection.add(), false, '[add] should be false here' );
-        equal( this.abstractCollection.get(), false, '[get] should be false here' );
-        equal( this.abstractCollection.clear(), true, '[clear] should be true here' );
-        equal( this.abstractCollection.contains(), false, '[contains] should be false here' );
-        equal( this.abstractCollection.isEmpty(), true, '[isEmpty] should be true here' );
-        equal( this.abstractCollection.remove(), false, '[remove] should be false here' );
-        equal( this.abstractCollection.size(), true, '[size] should be true here' );
-        equal( this.abstractCollection.toString(), true, '[toString] should be true here' );
+    test( '[methods]', function() {
+        equal( this.abstractCollection.add(), undefined, '[add] should be undefined here' );
+        equal( this.abstractCollection.get(), undefined, '[get] should be undefined here' );
+        equal( this.abstractCollection.clear(), undefined, '[clear] should be undefined here' );
+        equal( this.abstractCollection.contains(), undefined, '[contains] should be undefined here' );
+        equal( this.abstractCollection.isEmpty(), undefined, '[isEmpty] should be undefined here' );
+        equal( this.abstractCollection.remove(), undefined, '[remove] should be undefined here' );
+        equal( this.abstractCollection.size(), undefined, '[size] should be undefined here' );
+        equal( this.abstractCollection.toString(), undefined, '[toString] should be undefined here' );
     } );
 
-    test( '[getHash]', 11, function() {
+    test( '[getHash]', function() {
         var foo = function() { $.noop(); };
 
         deepEqual( this.abstractCollection.getHash( 'foo' ), 'acbd18db4cc2f85cedef654fccc4a4d8', 'hash for \"foo\" is correct' );
@@ -36,19 +36,21 @@ define( ['wijcModules/private/AbstractCollection'], function( AbstractCollection
         deepEqual( this.abstractCollection.getHash( foo ), null, 'return value for function was null' );
     } );
 
-    test( '[sortObjectByKeys]', 3, function() {
+    test( '[sortObjectByKeys]', function() {
         deepEqual( this.abstractCollection.sortObjectByKeys( {'foo': 'baz', 'bar': 1, 123: 'har'} ), {123: "har", bar: 1, foo: "baz"}, 'Object sorted correctly' );
         deepEqual( this.abstractCollection.sortObjectByKeys(), null, 'Non object - returned null' );
         deepEqual( this.abstractCollection.sortObjectByKeys( [1, '2', {'foo': 'bar'}] ), null, 'Non object - returned null' );
     } );
 
-    test( '[needsHashing]', 7, function() {
+    test( '[needsHashing]', function() {
         equal( this.abstractCollection.needsHashing( 'foo' ), false, 'String - no hashing' );
         equal( this.abstractCollection.needsHashing( {'bar': 1, 'foo': 'baz'} ), true, 'Object - hashing' );
         equal( this.abstractCollection.needsHashing( 23 ), false, 'Number - no hashing' );
         equal( this.abstractCollection.needsHashing( [1, 2, 3, 4] ), true, 'Array - hashing' );
         equal( this.abstractCollection.needsHashing( new Date( 2013, 9, 24 ) ), true, 'Date - hashing' );
         equal( this.abstractCollection.needsHashing( false ), false, 'Boolean - no hashing' );
+        equal( this.abstractCollection.needsHashing( 23.21 ), true, '23.21 returns true' );
+        equal( this.abstractCollection.needsHashing( 0.1 ), true, '0.1 returns true' );
         equal( this.abstractCollection.needsHashing(), null, 'undefined returns null' );
     } );
 } );
