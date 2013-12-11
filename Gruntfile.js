@@ -124,4 +124,7 @@ module.exports = function( grunt ) {
 
     // Default task.
     grunt.registerTask( 'default', ['jshint', 'qunit', 'clean:rjsOutput', 'requirejs'] );
+
+    // Travis CI
+    grunt.registerTask( 'travis', ['jshint', 'qunit'] );
 };
