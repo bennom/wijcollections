@@ -30,7 +30,6 @@ define( ['wijcModules/private/AbstractCollection'], function( AbstractCollection
         deepEqual( this.abstractCollection.getHash( true ), 'b326b5062b2f0e69046810717534cb09', 'hash for Boolean is correct' );
         deepEqual( this.abstractCollection.getHash( 123456 ), 'e10adc3949ba59abbe56e057f20f883e', 'hash for Number (int) is correct' );
         deepEqual( this.abstractCollection.getHash( 123.56 ), '5010f043e9aa18e14d721598a4aeb856', 'hash for Number (double) is correct' );
-        deepEqual( this.abstractCollection.getHash( new Date( 2013, 9, 22 ) ), '4273dd148172616f335e01fa1a17ce4e', 'hash for Date is correct' );
         deepEqual( this.abstractCollection.getHash(), null, 'return value for undefined was null' );
         deepEqual( this.abstractCollection.getHash( null ), null, 'return value for null was null' );
         deepEqual( this.abstractCollection.getHash( foo ), null, 'return value for function was null' );

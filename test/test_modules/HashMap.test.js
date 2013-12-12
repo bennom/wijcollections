@@ -55,7 +55,7 @@ define( ['wijcModules/public/HashMap'], function( HashMap ) {
             "key2": "36ac5f4ee1c1b30a6fa56a511616e135",
             "key3": 123456,
             "key4": "5010f043e9aa18e14d721598a4aeb856",
-            "key5": "4273dd148172616f335e01fa1a17ce4e",
+            "key5": this.emptyHm.hashObject( new Date( 2013, 9, 22 ) ),
             "key7": "foo",
             "key8": true
         }, 'keyHashToValueHash Object is correct' );
@@ -93,12 +93,15 @@ define( ['wijcModules/public/HashMap'], function( HashMap ) {
         deepEqual( this.emptyHm.put( new Date( 2013, 9, 22 ), new Date( 2013, 10, 23 ) ), new Date( 2013, 9, 23 ), 'replaced Date key with Date value' );
         deepEqual( this.emptyHm.put( new Date( 2013, 9, 22 ), new Date( 1984, 1, 15 ) ), new Date( 2013, 10, 23 ), 'replaced Date key with Date value' );
 
-        // check internal lists
-        deepEqual( this.emptyHm.keyHashToKey, {
+        var refKeyHashToKey = {
             "36ac5f4ee1c1b30a6fa56a511616e135": {"bar": 34, "foo": 12},
-            "4273dd148172616f335e01fa1a17ce4e": new Date( 2013, 9, 22 ),
             "57400b3ad8a6f9352e09ae496d7527f0": ['baz', 'foo', 'bar', 'quux']
-        }, 'keyHashToKey Object is correct' );
+        };
+
+        refKeyHashToKey[this.emptyHm.hashObject( new Date( 2013, 9, 22 ) )] = new Date( 2013, 9, 22 );
+
+        // check internal lists
+        deepEqual( this.emptyHm.keyHashToKey, refKeyHashToKey, 'keyHashToKey Object is correct' );
 
         // key hash to value hash mapping
         deepEqual( this.emptyHm.keyHashToValueHash, {
