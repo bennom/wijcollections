@@ -7,7 +7,7 @@
 
 ### Installation / Usage
 #### RequireJS Version
-Download or clone this repository and put the `dist/modules` folder in your desired location. Apply your config file to find this folder. In your JavaScript file you can simply require the modules of the `public` folder, e.g.:
+Download or clone this repository and put the `lib/modules` folder in your desired location. Apply your config file to find this folder. In your JavaScript file you can simply require the modules of the `public` folder, e.g.:
 ```
 require( ['path/to/modules/public/List'], function( List ) {
    var myList = new List();
