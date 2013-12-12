@@ -1,6 +1,6 @@
 # wijcollections #
 
-A Java like Collection Framework.
+[![Build Status](https://travis-ci.org/webinfluenza/wijcollections.png?branch=master)](https://travis-ci.org/webinfluenza/wijcollections) A Java like Collection Framework.
 
 ### Installation / Usage
 #### RequireJS Version
