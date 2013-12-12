@@ -2,6 +2,9 @@
 
 [![Build Status](https://travis-ci.org/webinfluenza/wijcollections.png?branch=master)](https://travis-ci.org/webinfluenza/wijcollections) A Java like Collection Framework.
 
+### API Documentation
+... can be found [here](http://www.webinfluenza.de/wijcollections/doc/ "Official Documentation") (YUIDoc version)
+
 ### Installation / Usage
 #### RequireJS Version
 Download or clone this repository and put the `dist/modules` folder in your desired location. Apply your config file to find this folder. In your JavaScript file you can simply require the modules of the `public` folder, e.g.:
@@ -18,10 +21,12 @@ Switch to the `not-required` [Branch](https://github.com/webinfluenza/wijcollect
 Include one of the files in your project and that's it.
 
 ### Actually implemented collections
-* List, [Documentation](https://github.com/webinfluenza/wijcollections/wiki/List "List API Documentation")
-* Stack, [Documentation](https://github.com/webinfluenza/wijcollections/wiki/Stack "Stack API Documentation")
+* List, [Documentation](http://www.webinfluenza.de/wijcollections/doc/classes/List.html "List API Documentation")
+* HashMap [Documentation](http://www.webinfluenza.de/wijcollections/doc/classes/HashMap.html "HashMap API Documentation")
+* Stack, [Documentation](http://www.webinfluenza.de/wijcollections/doc/classes/Stack.html "Stack API Documentation")
 
 ### Demo
+An online demo is coming soon!
 
 If you download or clone this repository and you can use the *test/wijcollections_test.html* file for playing around.
 This file includes the *lib/wijcollections.js*. There you can see how to use the collection and you can
