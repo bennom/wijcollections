@@ -93,6 +93,9 @@ define( ['wijcModules/public/HashMap'], function( HashMap ) {
         deepEqual( this.emptyHm.put( new Date( 2013, 9, 22 ), new Date( 2013, 10, 23 ) ), new Date( 2013, 9, 23 ), 'replaced Date key with Date value' );
         deepEqual( this.emptyHm.put( new Date( 2013, 9, 22 ), new Date( 1984, 1, 15 ) ), new Date( 2013, 10, 23 ), 'replaced Date key with Date value' );
 
+        // to get a dynamic date hashing, we need to add the date hash key "on the fly"
+        // and not by using a static hash string
+
         var refKeyHashToKey = {
             "36ac5f4ee1c1b30a6fa56a511616e135": {"bar": 34, "foo": 12},
             "57400b3ad8a6f9352e09ae496d7527f0": ['baz', 'foo', 'bar', 'quux']
@@ -103,12 +106,15 @@ define( ['wijcModules/public/HashMap'], function( HashMap ) {
         // check internal lists
         deepEqual( this.emptyHm.keyHashToKey, refKeyHashToKey, 'keyHashToKey Object is correct' );
 
-        // key hash to value hash mapping
-        deepEqual( this.emptyHm.keyHashToValueHash, {
+        var refKeyHashToValueHash = {
             "36ac5f4ee1c1b30a6fa56a511616e135": "36ac5f4ee1c1b30a6fa56a511616e135",
-            "4273dd148172616f335e01fa1a17ce4e": "af4aee04cca6ba43ce7368e6805fecc4",
             "57400b3ad8a6f9352e09ae496d7527f0": "57400b3ad8a6f9352e09ae496d7527f0"
-        }, 'keyHashToValueHash Object is correct' );
+        };
+
+        refKeyHashToValueHash[this.emptyHm.hashObject( new Date( 2013, 9, 22 ) )] = this.emptyHm.hashObject( new Date( 2013, 9, 23 ) );
+
+        // key hash to value hash mapping
+        deepEqual( this.emptyHm.keyHashToValueHash, refKeyHashToValueHash, 'keyHashToValueHash Object is correct' );
 
         // key set
         deepEqual( this.emptyHm.keyList, [
@@ -117,14 +123,19 @@ define( ['wijcModules/public/HashMap'], function( HashMap ) {
             new Date( 2013, 9, 22 )
         ], 'keyHashToValueHash Object is correct' );
 
-        // the central value list
-        deepEqual( this.emptyHm.valueList.listObject, {
+        var refListObject = {
             "duplicateCnt": 0,
             "overallCnt": 3,
             "36ac5f4ee1c1b30a6fa56a511616e135": {"cnt": 1, "ref": {"bar": 34, "quux": true}},
-            "4273dd148172616f335e01fa1a17ce4e": {"cnt": 1, "ref": new Date( 1984, 1, 15 )},
             "57400b3ad8a6f9352e09ae496d7527f0": {"cnt": 1, "ref": ['baz', 'foo']}
-        }, 'valueList.listObject Object is correct' );
+        };
+
+        refListObject[this.emptyHm.hashObject( new Date( 2013, 9, 22 ) )] = {
+            "cnt": 1, "ref": new Date( 1984, 1, 15 )
+        };
+
+        // the central value list
+        deepEqual( this.emptyHm.valueList.listObject, refListObject, 'valueList.listObject Object is correct' );
     } );
 
     test( 'putAll', function() {
