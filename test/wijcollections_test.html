@@ -17,9 +17,8 @@
 
     <!-- Load local lib and tests. -->
     <script src="../lib/wijcollections.js"></script>
-    <!-- Blanket
-    -->
-    <script src="../third_party/blanket/blanket.js" data-cover-flags="existingRequireJS branchTracking" data-cover-only="lib/modules/" data-cover-never="['third_party','test']"></script>
+
+    <!--[if gt IE 8]><!--> <script src="../third_party/blanket/blanket.js" data-cover-flags="existingRequireJS branchTracking" data-cover-only="lib/modules/" data-cover-never="['third_party','test']"></script> <!--<![endif]-->
 
     <script src="wijcollections_test.js"></script>
 
