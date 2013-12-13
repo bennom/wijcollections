@@ -16,21 +16,15 @@ require( ['path/to/modules/public/List'], function( List ) {
 ```
 
 #### Non RequireJS Version
-Switch to the `not-required` [Branch](https://github.com/webinfluenza/wijcollections/tree/not-required "Non RequireJS Branch"). Download either the [compressed](https://github.com/webinfluenza/wijcollections/blob/not-required/dist/wijcollections.min.js) or [developer](https://github.com/webinfluenza/wijcollections/blob/not-required/dist/wijcollections.js) version.
-
-Include one of the files in your project and that's it.
+Download the [compressed](https://github.com/webinfluenza/wijcollections/blob/not-required/dist/wijcollections.min.js) version, include the file in your project and that's it. Easy-peasy :-)
 
 ### Actually implemented collections
 * List, [Documentation](http://www.webinfluenza.de/wijcollections/doc/classes/List.html "List API Documentation")
 * HashMap [Documentation](http://www.webinfluenza.de/wijcollections/doc/classes/HashMap.html "HashMap API Documentation")
 * Stack, [Documentation](http://www.webinfluenza.de/wijcollections/doc/classes/Stack.html "Stack API Documentation")
 
-### Demo
-An online demo is coming soon!
-
-If you download or clone this repository and you can use the *test/wijcollections_test.html* file for playing around.
-This file includes the *lib/wijcollections.js*. There you can see how to use the collection and you can
-play around with it. Have fun.
+### Demo / Playground
+[Demo / Playground](http://jsfiddle.net/webinfluenza/hNqPE/ "jsfiddle playground") - here you go. Feel free to fiddle around.
 
 ### Generate Documentation
 If you have cloned or downloaded this repo, just run
@@ -38,7 +32,7 @@ If you have cloned or downloaded this repo, just run
 npm install
 grunt yuidoc
 ```
-to generate the documentation. The documenation will not be commited in this repository.
+to generate the documentation. You'll need Grunt for this as you can see. The documenation will not be commited in this repository.
 
 ## Release History
 Date | Version | Release Notes
