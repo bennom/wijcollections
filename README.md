@@ -43,6 +43,7 @@ to generate the documentation. The documenation will not be commited in this rep
 ## Release History
 Date | Version | Release Notes
 :------------|:-------:|:-----
+13.12.13 | 2.0.0 | ```HashMap``` implementation, API changes
 01.11.13 | 1.2.0 | introducing ```Stack``` class
 28.10.13 | 1.1.0 | ```List``` implementation of ```set()```
 27.10.13 | 1.0.0 | ```List``` production ready release

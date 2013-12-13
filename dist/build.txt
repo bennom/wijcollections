@@ -11,6 +11,14 @@ modules/public/List.js
 ----------------
 modules/public/List.js
 
+modules/public/Stack.js
+----------------
+modules/public/Stack.js
+
+modules/public/HashMap.js
+----------------
+modules/public/HashMap.js
+
 modules/public/PolyfillFunctions.js
 ----------------
 modules/public/PolyfillFunctions.js
