@@ -29,6 +29,8 @@ Download the [compressed](https://github.com/webinfluenza/wijcollections/blob/no
 * HashMap [Documentation](http://www.webinfluenza.de/wijcollections/doc/classes/HashMap.html "HashMap API Documentation")
 * Stack, [Documentation](http://www.webinfluenza.de/wijcollections/doc/classes/Stack.html "Stack API Documentation")
 
+### Browser Compatibility
+Tested on all actual major Browsers. Internet Explorer 9+ is supported. There are plans to also support Internet Explorer 8 in the future.
 
 ### Release History
 Date | Version | Release Notes
