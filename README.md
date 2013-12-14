@@ -30,7 +30,7 @@ Download the [compressed](https://github.com/webinfluenza/wijcollections/blob/no
 * Stack, [Documentation](http://www.webinfluenza.de/wijcollections/doc/classes/Stack.html "Stack API Documentation")
 
 
-## Release History
+### Release History
 Date | Version | Release Notes
 :------------|:-------:|:-----
 13.12.13 | 2.0.0 | ```HashMap``` implementation, API changes, more tests
