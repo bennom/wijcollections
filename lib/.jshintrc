@@ -12,6 +12,9 @@
     "eqnull": true,
     "browser": true,
     "evil": true,
+    "maxparams": 3,
+    "maxdepth": 4,
+    "maxstatements": 25,
     "predef": [
         "exports",
         "define",
