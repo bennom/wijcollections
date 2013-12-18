@@ -23,13 +23,13 @@ define( ['wijcModules/private/AbstractCollection'], function( AbstractCollection
     test( '[getHash]', function() {
         var foo = function() { $.noop(); };
 
-        deepEqual( this.abstractCollection.getHash( 'foo' ), 'acbd18db4cc2f85cedef654fccc4a4d8', 'hash for \"foo\" is correct' );
-        deepEqual( this.abstractCollection.getHash( 'bar' ), '37b51d194a7513e45b56f6524f2d51f2', 'hash for \"bar\" is correct' );
-        deepEqual( this.abstractCollection.getHash( ['baz', 'foo', 'bar', 'quux'] ), '57400b3ad8a6f9352e09ae496d7527f0', 'hash for Array is correct' );
-        deepEqual( this.abstractCollection.getHash( {'foo': 12, 'bar': 34} ), '8e31c476951c83023b96e480f875cbce', 'hash for Object is correct' );
-        deepEqual( this.abstractCollection.getHash( true ), 'b326b5062b2f0e69046810717534cb09', 'hash for Boolean is correct' );
-        deepEqual( this.abstractCollection.getHash( 123456 ), 'e10adc3949ba59abbe56e057f20f883e', 'hash for Number (int) is correct' );
-        deepEqual( this.abstractCollection.getHash( 123.56 ), '5010f043e9aa18e14d721598a4aeb856', 'hash for Number (double) is correct' );
+        deepEqual( this.abstractCollection.getHash( 'foo' ), '101574', 'hash for \"foo\" is correct' );
+        deepEqual( this.abstractCollection.getHash( 'bar' ), '97299', 'hash for \"bar\" is correct' );
+        deepEqual( this.abstractCollection.getHash( ['baz', 'foo', 'bar', 'quux'] ), '-1133304195', 'hash for Array is correct' );
+        deepEqual( this.abstractCollection.getHash( {'foo': 12, 'bar': 34} ), '-1396304513', 'hash for Object is correct' );
+        deepEqual( this.abstractCollection.getHash( true ), '3569038', 'hash for Boolean is correct' );
+        deepEqual( this.abstractCollection.getHash( 123456 ), '1450575459', 'hash for Number (int) is correct' );
+        deepEqual( this.abstractCollection.getHash( 123.56 ), '1450569693', 'hash for Number (double) is correct' );
         deepEqual( this.abstractCollection.getHash(), null, 'return value for undefined was null' );
         deepEqual( this.abstractCollection.getHash( null ), null, 'return value for null was null' );
         deepEqual( this.abstractCollection.getHash( foo ), null, 'return value for function was null' );
