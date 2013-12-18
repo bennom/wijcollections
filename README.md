@@ -4,7 +4,7 @@
 
 
 ### Demo / Playground
-[Demo / Playground](http://jsfiddle.net/webinfluenza/hNqPE/ "jsfiddle playground") - here you go. Feel free to fiddle around.
+[Demo / Playground](http://jsfiddle.net/webinfluenza/YM6vZ/ "jsfiddle playground") - here you go. Feel free to fiddle around.
 
 
 ### API Documentation
