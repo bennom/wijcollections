@@ -239,4 +239,16 @@ define( ['wijcModules/public/HashMap'], function( HashMap ) {
         this.emptyHm.keyList.length = Math.floor( (Math.pow( 2, 32 ) - 1) / 2 );
         equal( this.emptyHm.size(), this.emptyHm.getMaxArrayLength(), 'size equals the defined max size for Arrays' );
     } );
+
+    test( 'clone', function() {
+        var clone = this.exampleHm.clone();
+
+        deepEqual( clone, this.exampleHm, 'cloned HashMap equals the original one' );
+
+        // putting a test key value pair to the clone
+        clone.put( 'key9', '99 little bugs in the code, Take one down, patch it around, 117 little bugs in the code' );
+
+        deepEqual( clone.containsKey( 'key9' ), true, 'new key is in the clone' );
+        deepEqual( this.exampleHm.containsKey( 'key9' ), false, 'original HashMap does not contain the new key' );
+    } );
 } );
