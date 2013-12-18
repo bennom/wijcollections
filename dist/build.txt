@@ -22,7 +22,3 @@ modules/public/HashMap.js
 modules/public/PolyfillFunctions.js
 ----------------
 modules/public/PolyfillFunctions.js
-
-modules/utils/wiMD5.js
-----------------
-modules/utils/wiMD5.js

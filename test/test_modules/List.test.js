@@ -33,12 +33,14 @@ define( ['wijcModules/public/List'], function( List ) {
         equal( this.list.add( [1, 2, 3, 4] ), true, 'adding Array element' );
         equal( this.list.add( new Date( 2013, 9, 24 ) ), true, 'adding Date Object element' );
         equal( this.list.add( false ), true, 'adding Boolean element' );
+        equal( this.list.add( function() { return true; } ), null, 'adding Function returns null' );
         deepEqual( this.list.list, referenceList, 'list elements are in the right position' );
     } );
 
-    test( '[addAt]', 14, function() {
-        var resultReference = [this.list.hashObject( new Date( 2013, 9, 22 ) ), "baz", "foo", this.list.hashObject( {'bar': 1, 'foo': 'baz'} ), "bar", "quux", this.list.hashObject( [1, 2, 3, 4] )];
+    test( '[addAt]', function() {
+        var resultReference = [this.list.hashObject( new Date( 2013, 9, 22 ) ), "baz", "foo", this.list.hashObject( {'bar': 1, 'foo': 'baz'} ), "bar", "quux", this.list.hashObject( [1, 2, 3, 4] ), this.list.hashObject( [5, 6] ), 'Rhabarberbarbar'];
 
+        deepEqual( this.list.addAt(), null, 'adding undefined returns null' );
         equal( this.list.addAt( 'bar' ), true, 'adding element without position (at the end)' );
         equal( this.list.addAt( 'baz', 0 ), true, 'adding element at position 0' );
         equal( this.list.addAt( 'quux' ), true, 'adding element at last position' );
@@ -53,12 +55,19 @@ define( ['wijcModules/public/List'], function( List ) {
         equal( this.list.addAt( [1, 2, 3, 4], 1 ), true, '[Duplicate] adding element (position not relevant)' );
         equal( this.list.addAt( new Date( 2013, 9, 22 ), 3 ), true, '[Duplicate] adding element (position not relevant)' );
 
+        // testing some out of bounds issues
+        equal( this.list.addAt( [5, 6], 2013 ), true, 'adding element on higher index' );
+        equal( this.list.addAt( 'Rhabarberbarbar', 2014 ), true, 'adding element (no hashing) on higher index' );
+
         deepEqual( this.list.list, resultReference, 'list elements are in the right position' );
-        deepEqual( this.list.size(), 7, 'size() returns valid number of elements in the Array' );
-        deepEqual( this.list.size( true ), 11, 'Duplicate counter returns valid number' );
+        deepEqual( this.list.size(), 9, 'size() returns valid number of elements in the Array' );
+        deepEqual( this.list.size( true ), 13, 'Duplicate counter returns valid number' );
+
     } );
 
-    test( '[get]', 11, function() {
+    test( '[get]', function() {
+        equal( this.exampleList.get(), null, 'undefined index returns null' );
+
         equal( this.exampleList.get( 0 ), 'foo', 'got the right element' );
         equal( this.exampleList.get( 1 ), 'bar', 'got the right element' );
         equal( this.exampleList.list[1], 'bar', 'elements still present in the list' );
@@ -73,7 +82,7 @@ define( ['wijcModules/public/List'], function( List ) {
         deepEqual( this.mixedList.get( 6 ), null, 'got the right element' );
     } );
 
-    test( '[size]', 5, function() {
+    test( '[size]', function() {
         deepEqual( this.list.size(), 0, 'list is empty' );
 
         this.list.add( 'foo' );
@@ -91,7 +100,8 @@ define( ['wijcModules/public/List'], function( List ) {
         deepEqual( this.mixedList.size( true ), 10, 'Duplicate counter returns valid number' );
     } );
 
-    test( '[indexOf]', 7, function() {
+    test( '[indexOf]', function() {
+        deepEqual( this.mixedList.indexOf(), -1, 'undefined index returns -1' );
         deepEqual( this.mixedList.indexOf( 'foo' ), 0, 'right index for \"foo"\ found' );
         deepEqual( this.mixedList.indexOf( 22 ), 1, 'right index for \"22\" found' );
         deepEqual( this.mixedList.indexOf( {'bar': 1, 'foo': 'baz'} ), 2, 'right index for Object found' );
@@ -101,7 +111,7 @@ define( ['wijcModules/public/List'], function( List ) {
         deepEqual( this.mixedList.indexOf( 'not found' ), -1, 'right value for non existing value' );
     } );
 
-    test( '[clear]', 2, function() {
+    test( '[clear]', function() {
         var emptyList = new List(); // reference object
 
         // increment the internal counter for test
@@ -112,7 +122,9 @@ define( ['wijcModules/public/List'], function( List ) {
 
     } );
 
-    test( '[contains]', 6, function() {
+    test( '[contains]', function() {
+        deepEqual( this.exampleList.contains(), null, 'passing undefined returns null' );
+
         equal( this.exampleList.contains( 'foo' ), true, 'element \"foo\" found in list' );
         equal( this.exampleList.contains( 'bar' ), true, 'element \"bar\" found in list' );
         equal( this.exampleList.contains( 'baz' ), true, 'element \"baz\" found in list' );
@@ -127,18 +139,22 @@ define( ['wijcModules/public/List'], function( List ) {
         equal( this.exampleList.contains( {'foo': 1, 'bar': 2} ), true, 'Object found in list' );
     } );
 
-    test( '[isEmpty]', 2, function() {
+    test( '[isEmpty]', function() {
         var emptyList = new List();
 
         deepEqual( this.exampleList.isEmpty(), false, 'Example list is not empty' );
         deepEqual( emptyList.isEmpty(), true, 'Empty list is empty :-)' );
     } );
 
-    test( '[remove]', 8, function() {
+    test( '[remove]', function() {
         var resultListReference = new List();
 
         // add a duplicate entry
         this.mixedList.add( {'bar': 1, 'foo': 'baz'} );
+
+        deepEqual( this.mixedList.remove(), false, 'passing undefined as parameter returns false' );
+        deepEqual( this.mixedList.remove( 'Rhabarberbarbar' ), false, 'passing not existing element as parameter returns false' );
+        deepEqual( this.mixedList.remove( {'name': 'Rhabarberbarbar'} ), false, 'passing not existing element (with hashing) as parameter returns false' );
 
         deepEqual( this.mixedList.remove( 'foo' ), true, 'Removed a element' );
         deepEqual( this.mixedList.remove( 22 ), true, 'Removed a element' );
@@ -154,8 +170,13 @@ define( ['wijcModules/public/List'], function( List ) {
         deepEqual( this.mixedList.baseObject, resultListReference.baseObject, 'List baseObject is empty' );
     } );
 
-    test( '[set]', 10, function() {
+    test( '[set]', function() {
         var resultList = [this.mixedList.hashObject( {'baz': 5, 'quux': 'foo'} ), 44, this.mixedList.hashObject( {'baz': 3} ), this.mixedList.hashObject( [1, 2, 3] ), this.mixedList.hashObject( new Date( 2013, 9, 28 ) ), true, 22];
+
+        // some unwanted bahvior tests
+        deepEqual( this.mixedList.set( 0 ), null, 'one missing parameter returns null' );
+        deepEqual( this.mixedList.set( {'baz': 3}, -5 ), null, 'setting to index < 0 returns null' );
+        deepEqual( this.mixedList.set( {'baz': 3}, 2013 ), null, 'setting to index > array.size() returns null' );
 
         // adding some basic duplicates first
         this.mixedList.add( 22 );
@@ -177,7 +198,7 @@ define( ['wijcModules/public/List'], function( List ) {
         deepEqual( this.mixedList.list, resultList, 'Result Array equals the expected one' );
     } );
 
-    test( '[toString]', 1, function() {
+    test( '[toString]', function() {
         deepEqual( this.mixedList.toString(), "foo,22," + this.mixedList.hashObject( {'bar': 1, 'foo': 'baz'} ) + "," + this.mixedList.hashObject( ['baz', 'foo', 'bar'] ) + "," + this.mixedList.hashObject( new Date( 2013, 9, 24 ) ) + ",false", "return the right String" );
     } );
 } );

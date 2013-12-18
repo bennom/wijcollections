@@ -34,8 +34,8 @@ module.exports = function( grunt ) {
             },
 
             dist: {
-                src: ['lib/<%= pkg.name %>.js'],
-                dest: 'dist/<%= pkg.name %>.js'
+                src: ['lib/modules/<%= pkg.name %>.js'],
+                dest: 'dist/modules/<%= pkg.name %>.js'
             }
         },
 
@@ -79,8 +79,7 @@ module.exports = function( grunt ) {
                         {name: 'modules/public/List'},
                         {name: 'modules/public/Stack'},
                         {name: 'modules/public/HashMap'},
-                        {name: 'modules/public/PolyfillFunctions'},
-                        {name: 'modules/utils/wiMD5'}
+                        {name: 'modules/public/PolyfillFunctions'}
                     ],
                     findNestedDependencies: true
                 }
@@ -114,7 +113,7 @@ module.exports = function( grunt ) {
     } );
 
     // Default task.
-    grunt.registerTask( 'default', ['jshint', 'qunit', 'clean:rjsOutput', 'requirejs'] );
+    grunt.registerTask( 'default', ['jshint', 'qunit', 'clean:rjsOutput', 'requirejs', 'yuidoc'] );
 
     // Travis CI
     grunt.registerTask( 'travis', ['jshint', 'qunit'] );

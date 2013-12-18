@@ -6,4 +6,4 @@
  * Licensed under the MIT license.
  */
 
-(function(e){require.config({baseUrl:"../",paths:{wijcModules:"lib/modules",md5:"lib/modules/utils"}})})();
+(function(e){require.config({baseUrl:"../",paths:{wijcModules:"lib/modules"}})})();

@@ -14,13 +14,13 @@ define( ['wijcModules/public/Stack'], function( Stack ) {
         }
     } );
 
-    test( '[empty]', 2, function() {
+    test( '[empty]', function() {
         deepEqual( this.stack.empty(), true, 'Stack is empty' );
         this.stack.push( 'Rudi' );
         deepEqual( this.stack.empty(), false, 'Stack is not empty anymore' );
     } );
 
-    test( '[peek]', 7, function() {
+    test( '[peek]', function() {
         this.stack.push( 'Rudi' );
         deepEqual( this.stack.peek(), 'Rudi', 'String - peeked right' );
 
@@ -43,7 +43,7 @@ define( ['wijcModules/public/Stack'], function( Stack ) {
         deepEqual( this.stack.peek(), new Date( 2013, 9, 24 ), 'Date - peeked right' );
     } );
 
-    test( '[pop]', 9, function() {
+    test( '[pop]', function() {
         deepEqual( this.mixedStack.pop(), false, 'got the right object from stack' );
         deepEqual( this.mixedStack.pop(), new Date( 2013, 9, 24 ), 'got the right object from stack' );
         deepEqual( this.mixedStack.pop(), [1, 2, 3, 4], 'got the right object from stack' );
@@ -55,7 +55,7 @@ define( ['wijcModules/public/Stack'], function( Stack ) {
         deepEqual( this.mixedStack.empty(), true, 'Stack is really empty!' );
     } );
 
-    test( '[push]', 6, function() {
+    test( '[push]', function() {
         var resultRef = ["Rudi", 22, this.stack.hashObject( {firstName: 'Rudi', age: 22} ), this.stack.hashObject( [1, 2, 3] ), true];
 
         deepEqual( this.stack.push( 'Rudi' ), 'Rudi', 'String pushed' );
@@ -64,9 +64,10 @@ define( ['wijcModules/public/Stack'], function( Stack ) {
         deepEqual( this.stack.push( [1, 2, 3] ), [1, 2, 3], 'Array pushed' );
         deepEqual( this.stack.push( true ), true, 'Boolean pushed' );
         deepEqual( this.stack.stack, resultRef, 'Result stack is fine' );
+        deepEqual( this.stack.push(), null, 'undefined item returns null' );
     } );
 
-    test( '[search]', 7, function() {
+    test( '[search]', function() {
         deepEqual( this.mixedStack.search( 'foo' ), 7, 'Found String' );
         deepEqual( this.mixedStack.search( {'bar': 1, 'foo': 'baz'} ), 5, 'Found Object' ); // duplicate here
         deepEqual( this.mixedStack.search( 23 ), 4, 'Found Number' );

@@ -35,6 +35,7 @@ Tested on all actual major Browsers. Internet Explorer 9+ is supported. There ar
 ### Release History
 Date | Version | Release Notes
 :------------|:-------:|:-----
+18.12.13 | 2.1.0 | much faster hashing algorithm, ```HashMap.clone()```, tests & bug fixes
 13.12.13 | 2.0.0 | ```HashMap``` implementation, API changes, more tests
 01.11.13 | 1.2.0 | introducing ```Stack``` class
 28.10.13 | 1.1.0 | ```List``` implementation of ```set()```
