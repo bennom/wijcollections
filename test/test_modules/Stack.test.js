@@ -56,7 +56,7 @@ define( ['wijcModules/public/Stack'], function( Stack ) {
     } );
 
     test( '[push]', 6, function() {
-        var resultRef = ["Rudi", 22, "2fcd40f12d511a726078114f0ddb41c2", "f1e46f328e6decd56c64dd5e761dc2b7", true];
+        var resultRef = ["Rudi", 22, this.stack.hashObject( {firstName: 'Rudi', age: 22} ), this.stack.hashObject( [1, 2, 3] ), true];
 
         deepEqual( this.stack.push( 'Rudi' ), 'Rudi', 'String pushed' );
         deepEqual( this.stack.push( 22 ), 22, 'Number pushed' );

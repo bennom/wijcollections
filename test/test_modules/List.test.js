@@ -24,7 +24,7 @@ define( ['wijcModules/public/List'], function( List ) {
     } );
 
     test( '[add]', function() {
-        var referenceList = ["foo", "bb9f0348505124479bfd044dae6b5f14", 23, "7bd4c63ba2cdadb060f5730e7bf66a30", this.list.hashObject( new Date( 2013, 9, 24 ) ), false];
+        var referenceList = ["foo", this.list.hashObject( {'bar': 1, 'foo': 'baz'} ), 23, this.list.hashObject( [1, 2, 3, 4] ), this.list.hashObject( new Date( 2013, 9, 24 ) ), false];
 
         equal( this.list.add( 'foo' ), true, 'adding an element correctly' );
         equal( this.list.add(), null, 'adding element failed - should be null' );
@@ -37,7 +37,7 @@ define( ['wijcModules/public/List'], function( List ) {
     } );
 
     test( '[addAt]', 14, function() {
-        var resultReference = [this.list.hashObject( new Date( 2013, 9, 22 ) ), "baz", "foo", "bb9f0348505124479bfd044dae6b5f14", "bar", "quux", "7bd4c63ba2cdadb060f5730e7bf66a30"];
+        var resultReference = [this.list.hashObject( new Date( 2013, 9, 22 ) ), "baz", "foo", this.list.hashObject( {'bar': 1, 'foo': 'baz'} ), "bar", "quux", this.list.hashObject( [1, 2, 3, 4] )];
 
         equal( this.list.addAt( 'bar' ), true, 'adding element without position (at the end)' );
         equal( this.list.addAt( 'baz', 0 ), true, 'adding element at position 0' );
@@ -155,7 +155,7 @@ define( ['wijcModules/public/List'], function( List ) {
     } );
 
     test( '[set]', 10, function() {
-        var resultList = ["46351a89839fb1709e28c5c3853baf5c", 44, "097ada11b92e404e6812ea59a209e3bb", "f1e46f328e6decd56c64dd5e761dc2b7", this.mixedList.hashObject( new Date( 2013, 9, 28 ) ), true, 22];
+        var resultList = [this.mixedList.hashObject( {'baz': 5, 'quux': 'foo'} ), 44, this.mixedList.hashObject( {'baz': 3} ), this.mixedList.hashObject( [1, 2, 3] ), this.mixedList.hashObject( new Date( 2013, 9, 28 ) ), true, 22];
 
         // adding some basic duplicates first
         this.mixedList.add( 22 );
@@ -178,6 +178,6 @@ define( ['wijcModules/public/List'], function( List ) {
     } );
 
     test( '[toString]', 1, function() {
-        deepEqual( this.mixedList.toString(), "foo,22,bb9f0348505124479bfd044dae6b5f14,7641a52cc856c97d63f5b1b306896fc1," + this.mixedList.hashObject( new Date( 2013, 9, 24 ) ) + ",false", "return the right String" );
+        deepEqual( this.mixedList.toString(), "foo,22," + this.mixedList.hashObject( {'bar': 1, 'foo': 'baz'} ) + "," + this.mixedList.hashObject( ['baz', 'foo', 'bar'] ) + "," + this.mixedList.hashObject( new Date( 2013, 9, 24 ) ) + ",false", "return the right String" );
     } );
 } );

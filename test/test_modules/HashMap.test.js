@@ -51,13 +51,13 @@ define( ['wijcModules/public/HashMap'], function( HashMap ) {
 
         // key hash to value hash mapping
         deepEqual( this.emptyHm.keyHashToValueHash, {
-            "key1": "57400b3ad8a6f9352e09ae496d7527f0",
-            "key2": "36ac5f4ee1c1b30a6fa56a511616e135",
-            "key3": 123456,
-            "key4": "5010f043e9aa18e14d721598a4aeb856",
-            "key5": this.emptyHm.hashObject( new Date( 2013, 9, 22 ) ),
-            "key7": "foo",
-            "key8": true
+            "key1": this.emptyHm.hashObject( ['baz', 'foo'] ),
+            "key2": this.emptyHm.hashObject( {'bar': 34} ),
+            "key3": 78,
+            "key4": this.emptyHm.hashObject( 78.91 ),
+            "key5": this.emptyHm.hashObject( new Date( 2013, 9, 23 ) ),
+            "key7": "bar",
+            "key8": false
         }, 'keyHashToValueHash Object is correct' );
 
         // key set
@@ -96,22 +96,20 @@ define( ['wijcModules/public/HashMap'], function( HashMap ) {
         // to get a dynamic date hashing, we need to add the date hash key "on the fly"
         // and not by using a static hash string
 
-        var refKeyHashToKey = {
-            "36ac5f4ee1c1b30a6fa56a511616e135": {"bar": 34, "foo": 12},
-            "57400b3ad8a6f9352e09ae496d7527f0": ['baz', 'foo', 'bar', 'quux']
-        };
+        var refKeyHashToKey = {};
 
+        refKeyHashToKey[this.emptyHm.hashObject( {"bar": 34, "foo": 12} )] = {"bar": 34, "foo": 12};
+        refKeyHashToKey[this.emptyHm.hashObject( ['baz', 'foo', 'bar', 'quux'] )] = ['baz', 'foo', 'bar', 'quux'];
         refKeyHashToKey[this.emptyHm.hashObject( new Date( 2013, 9, 22 ) )] = new Date( 2013, 9, 22 );
 
         // check internal lists
         deepEqual( this.emptyHm.keyHashToKey, refKeyHashToKey, 'keyHashToKey Object is correct' );
 
-        var refKeyHashToValueHash = {
-            "36ac5f4ee1c1b30a6fa56a511616e135": "36ac5f4ee1c1b30a6fa56a511616e135",
-            "57400b3ad8a6f9352e09ae496d7527f0": "57400b3ad8a6f9352e09ae496d7527f0"
-        };
+        var refKeyHashToValueHash = {};
 
-        refKeyHashToValueHash[this.emptyHm.hashObject( new Date( 2013, 9, 22 ) )] = this.emptyHm.hashObject( new Date( 2013, 9, 23 ) );
+        refKeyHashToValueHash[this.emptyHm.hashObject( {"bar": 34, "foo": 12} )] = this.emptyHm.hashObject( {'quux': true, 'bar': 34} );
+        refKeyHashToValueHash[this.emptyHm.hashObject( ['baz', 'foo', 'bar', 'quux'] )] = this.emptyHm.hashObject( ['baz', 'foo'] );
+        refKeyHashToValueHash[this.emptyHm.hashObject( new Date( 2013, 9, 22 ) )] = this.emptyHm.hashObject( new Date( 1984, 1, 15 ) );
 
         // key hash to value hash mapping
         deepEqual( this.emptyHm.keyHashToValueHash, refKeyHashToValueHash, 'keyHashToValueHash Object is correct' );
@@ -123,16 +121,11 @@ define( ['wijcModules/public/HashMap'], function( HashMap ) {
             new Date( 2013, 9, 22 )
         ], 'keyHashToValueHash Object is correct' );
 
-        var refListObject = {
-            "duplicateCnt": 0,
-            "overallCnt": 3,
-            "36ac5f4ee1c1b30a6fa56a511616e135": {"cnt": 1, "ref": {"bar": 34, "quux": true}},
-            "57400b3ad8a6f9352e09ae496d7527f0": {"cnt": 1, "ref": ['baz', 'foo']}
-        };
+        var refListObject = {"duplicateCnt": 0, "overallCnt": 3};
 
-        refListObject[this.emptyHm.hashObject( new Date( 2013, 9, 22 ) )] = {
-            "cnt": 1, "ref": new Date( 1984, 1, 15 )
-        };
+        refListObject[this.emptyHm.hashObject( new Date( 2013, 9, 22 ) )] = {"cnt": 1, "ref": new Date( 1984, 1, 15 )};
+        refListObject[this.emptyHm.hashObject( ['baz', 'foo', 'bar', 'quux'] )] = {"cnt": 1, "ref": ['baz', 'foo']};
+        refListObject[this.emptyHm.hashObject( {"bar": 34, "foo": 12} )] = {"cnt": 1, "ref": {'quux': true, 'bar': 34}};
 
         // the central value list
         deepEqual( this.emptyHm.valueList.listObject, refListObject, 'valueList.listObject Object is correct' );
