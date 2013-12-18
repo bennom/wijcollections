@@ -151,10 +151,10 @@ define( ['wijcModules/public/HashMap'], function( HashMap ) {
         // check the internal mappings that everything is removed successfully
         deepEqual( this.exampleHm.keyHashToKey['key1'], undefined, 'removed from keyHashToKey' )
         deepEqual( this.exampleHm.keyHashToValueHash['key1'], undefined, 'removed from keyHashToValueHash' )
-        deepEqual( this.exampleHm.keyHashToKey['36ac5f4ee1c1b30a6fa56a511616e135'], undefined, 'removed from keyHashToKey' )
-        deepEqual( this.exampleHm.keyHashToValueHash['36ac5f4ee1c1b30a6fa56a511616e135'], undefined, 'removed from keyHashToValueHash' )
+        deepEqual( this.exampleHm.keyHashToKey[this.emptyHm.hashObject( {'bar': 34} )], undefined, 'removed from keyHashToKey' )
+        deepEqual( this.exampleHm.keyHashToValueHash[this.emptyHm.hashObject( {'bar': 34} )], undefined, 'removed from keyHashToValueHash' )
         deepEqual( this.exampleHm.valueList.get( 'key1' ), null, 'removed from valueList' )
-        deepEqual( this.exampleHm.valueList.get( '36ac5f4ee1c1b30a6fa56a511616e135' ), null, 'removed from valueList' )
+        deepEqual( this.exampleHm.valueList.get( this.emptyHm.hashObject( {'bar': 34} ) ), null, 'removed from valueList' )
         deepEqual( this.exampleHm.keyList.indexOf( 'key1' ), -1, 'removed from keyList' );
     } );
 
