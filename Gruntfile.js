@@ -54,11 +54,12 @@ module.exports = function( grunt ) {
             compile: {
                 name: '<%= pkg.name %>',
                 description: '<%= pkg.description %>',
-                version: '<%= pkg.version %>',
+                version: '<%= pkg.name %> <%= pkg.version %>',
                 url: '<%= pkg.homepage %>',
                 options: {
                     paths: 'lib/',
-                    outdir: 'documentation/'
+                    outdir: 'documentation/api/',
+                    themedir: 'documentation/themes/wiFlat'
                 }
             }
         },
@@ -108,6 +109,10 @@ module.exports = function( grunt ) {
             lib: {
                 files: '<%= jshint.lib.src %>',
                 tasks: ['jshint:lib', 'qunit']
+            },
+            yuidoc: {
+                files: 'documentation/themes/**/*.*',
+                tasks: ['yuidoc']
             }
         }
     } );

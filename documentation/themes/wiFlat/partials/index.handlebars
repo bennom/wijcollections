@@ -1,0 +1,39 @@
+<h3 class="h2">A Java Collection like implementation for JavaScript.</h3>
+
+<div class="sidebox">
+    <h3>Description</h3>
+    <p>The wijcollections classes are fast and easy to use. Handling complex data wasn't easier before.</p>
+    <p>wijcollections took the Java Collection API as a model and is trying to port the API
+        to JavaScript. Also it is implemented with RequireJS mainly and supports all main browsers
+        and IE9+ (support for IE8 will be provided soon)</p>
+    <p>In short, it's really fast, simple, generic and efficient.</p>
+</div>
+
+<div class="sidebox">
+    <h3>Why to use</h3>
+    <p>JavaScript doesn’t provide real data structures. Neither does wiJCollections, yeah.
+        But ... we can mimic such structures. That’s the approach here. Typically, you can
+        create an array or an object and do fancy stuff like iterating to fill up and / or
+        search for a specific value in that array.
+    <p>You might say:
+        <em>“But you can use an object to access things real fast!”</em>, and that’s right.
+        But: objects do not have a guaranteed (key) order, arrays do. And the order is an
+        important thing sometimes. Furthermore one additional question: how do you
+        find an object in an Array or an object in an object that doesn’t have an
+        ID or something unique? That’s why I came up with wiJCollections – to solve this problems.</p>
+</div>
+
+<div class="sidebox">
+    <h3>Why it's so fast</h3>
+    <p>If an element is added to a collection, no matter what type of object it is (Object, Array, String ...),
+        it get's an internal unique id and is also added in an ordered manner by default.</p>
+    <p>Now, if you're looking for an specific element, the lookup will run in a constant time,
+        because of the internal ids. There are no additional iterations.</p>
+</div>
+
+<div class="sidebox">
+    <h3>Known Problems</h3>
+    <p>When you're trying to add functions, or object with functions as values.
+        Functions can't be compared in a trivial manner, nor is a serialization a proper way
+        (see <a href="http://en.wikipedia.org/wiki/Rice's_theorem" title="Rice's theorem" target="_blank">Rice's theorem</a>).</p>
+</div>
