@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/webinfluenza/wijcollections.png?label=ready)](https://waffle.io/webinfluenza/wijcollections)  
 # wijcollections #
 
 [![Build Status](https://travis-ci.org/webinfluenza/wijcollections.png?branch=master)](https://travis-ci.org/webinfluenza/wijcollections) A Java like Collection Framework.
