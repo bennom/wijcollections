@@ -153,6 +153,7 @@ define( ['wijcModules/public/HashMap'], function( HashMap ) {
         deepEqual( this.exampleHm.keyHashToValueHash['key1'], undefined, 'removed from keyHashToValueHash' )
         deepEqual( this.exampleHm.keyHashToKey[this.emptyHm.hashObject( {'bar': 34} )], undefined, 'removed from keyHashToKey' )
         deepEqual( this.exampleHm.keyHashToValueHash[this.emptyHm.hashObject( {'bar': 34} )], undefined, 'removed from keyHashToValueHash' )
+        deepEqual( this.exampleHm.valueHashToKeyHash['key1'], undefined, 'removed from valueHashToKeyHash' )
         deepEqual( this.exampleHm.valueList.get( 'key1' ), null, 'removed from valueList' )
         deepEqual( this.exampleHm.valueList.get( this.emptyHm.hashObject( {'bar': 34} ) ), null, 'removed from valueList' )
         deepEqual( this.exampleHm.keyList.indexOf( 'key1' ), -1, 'removed from keyList' );
