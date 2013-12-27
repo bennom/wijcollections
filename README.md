@@ -13,19 +13,19 @@ A Java like Collection Framework.
 
 ### Installation / Usage
 #### RequireJS Version
-Download or clone this repository and put the `lib/modules` folder in your desired location. Apply your config file to find this folder. In your JavaScript file you can simply require the modules of the `public` folder, e.g.:
+Download or clone this repository and put the `dist/modules` folder in your desired location. Apply your config file to find this folder. In your JavaScript file you can simply require the modules of the `public` folder, e.g.:
 ```
-require( ['path/to/modules/public/List'], function( List ) {
+require( ['public/List'], function( List ) {
    var myList = new List();
 } );
 ```
 
-#### Non RequireJS Version
-Download the [compressed](https://github.com/webinfluenza/wijcollections/blob/not-required/dist/wijcollections.min.js) version, include the file in your project and that's it. Easy-peasy :-)
+#### Vanilla JS / Non Require.js Version
+Download the [compressed](https://raw.github.com/webinfluenza/wijcollections/master/not-required/wijcollections-2.2.0.min.js) version, include the file in your project and that's it. Easy-peasy :-)
 
 
 ### Actually implemented collections
-* List, [Documentation](http://www.webinfluenza.de/wijcollections/doc/classes/List.html "List API Documentation")
+* (Array) List, [Documentation](http://www.webinfluenza.de/wijcollections/doc/classes/List.html "List API Documentation")
 * HashMap [Documentation](http://www.webinfluenza.de/wijcollections/doc/classes/HashMap.html "HashMap API Documentation")
 * Stack, [Documentation](http://www.webinfluenza.de/wijcollections/doc/classes/Stack.html "Stack API Documentation")
 
