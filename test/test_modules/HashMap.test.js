@@ -1,4 +1,4 @@
-define( ['wijcModules/public/HashMap'], function( HashMap ) {
+define( ['public/HashMap'], function( HashMap ) {
     module( 'HashMap', {
         setup: function() {
             this.emptyHm = new HashMap();

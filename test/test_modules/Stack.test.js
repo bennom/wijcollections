@@ -1,4 +1,4 @@
-define( ['wijcModules/public/Stack'], function( Stack ) {
+define( ['public/Stack'], function( Stack ) {
     module( 'Stack', {
         setup: function() {
             this.stack = new Stack();

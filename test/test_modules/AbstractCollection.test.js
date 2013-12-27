@@ -1,35 +1,23 @@
 /**
  * The actual test suite
  */
-
-define( ['wijcModules/private/AbstractCollection'], function( AbstractCollection ) {
+define( ['private/AbstractCollection'], function( AbstractCollection ) {
     module( 'AbstractCollection', {
         setup: function() {
             this.abstractCollection = new AbstractCollection();
         }
     } );
 
-    test( '[methods]', function() {
-        equal( this.abstractCollection.add(), undefined, '[add] should be undefined here' );
-        equal( this.abstractCollection.get(), undefined, '[get] should be undefined here' );
-        equal( this.abstractCollection.clear(), undefined, '[clear] should be undefined here' );
-        equal( this.abstractCollection.contains(), undefined, '[contains] should be undefined here' );
-        equal( this.abstractCollection.isEmpty(), undefined, '[isEmpty] should be undefined here' );
-        equal( this.abstractCollection.remove(), undefined, '[remove] should be undefined here' );
-        equal( this.abstractCollection.size(), undefined, '[size] should be undefined here' );
-        equal( this.abstractCollection.toString(), undefined, '[toString] should be undefined here' );
-    } );
-
     test( '[getHash]', function() {
         var foo = function() { $.noop(); };
 
-        deepEqual( this.abstractCollection.getHash( 'foo' ), '101574', 'hash for \"foo\" is correct' );
-        deepEqual( this.abstractCollection.getHash( 'bar' ), '97299', 'hash for \"bar\" is correct' );
-        deepEqual( this.abstractCollection.getHash( ['baz', 'foo', 'bar', 'quux'] ), '-1133304195', 'hash for Array is correct' );
-        deepEqual( this.abstractCollection.getHash( {'foo': 12, 'bar': 34} ), '-1396304513', 'hash for Object is correct' );
-        deepEqual( this.abstractCollection.getHash( true ), '3569038', 'hash for Boolean is correct' );
-        deepEqual( this.abstractCollection.getHash( 123456 ), '1450575459', 'hash for Number (int) is correct' );
-        deepEqual( this.abstractCollection.getHash( 123.56 ), '1450569693', 'hash for Number (double) is correct' );
+        deepEqual( this.abstractCollection.getHash( 'foo' ), '104202', 'hash for \"foo\" is correct' );
+        deepEqual( this.abstractCollection.getHash( 'bar' ), '92476', 'hash for \"bar\" is correct' );
+        deepEqual( this.abstractCollection.getHash( ['baz', 'foo', 'bar', 'quux'] ), '-1228433931', 'hash for Array is correct' );
+        deepEqual( this.abstractCollection.getHash( {'foo': 12, 'bar': 34} ), '-1487304888', 'hash for Object is correct' );
+        deepEqual( this.abstractCollection.getHash( true ), '3505513', 'hash for Boolean is correct' );
+        deepEqual( this.abstractCollection.getHash( 123456 ), '1404613866', 'hash for Number (int) is correct' );
+        deepEqual( this.abstractCollection.getHash( 123.56 ), '1404789793', 'hash for Number (double) is correct' );
         deepEqual( this.abstractCollection.getHash(), null, 'return value for undefined was null' );
         deepEqual( this.abstractCollection.getHash( null ), null, 'return value for null was null' );
         deepEqual( this.abstractCollection.getHash( foo ), null, 'return value for function was null' );

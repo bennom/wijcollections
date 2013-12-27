@@ -1,6 +1,6 @@
 {
-    "name": "wiJCollections",
-    "version": "2.1.0",
+    "name": "wijcollections",
+    "version": "2.2.0",
     "ignore": [
         ".jshintrc",
         ".gitignore"

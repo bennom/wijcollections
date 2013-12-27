@@ -1,7 +1,7 @@
 {
   "name": "wijcollections",
   "description": "A Java like collection framework.",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "homepage": "https://github.com/webinfluenza/wijcollections",
   "author": {
     "name": "Benno Mielke",
@@ -40,7 +40,8 @@
     "grunt-contrib-requirejs": "~0.4.1",
     "grunt-contrib-clean": "~0.5.0",
     "grunt-bower-task": "~0.3.4",
-    "grunt-cli": "~0.1.11"
+    "grunt-cli": "~0.1.11",
+    "grunt-banner": "~0.2.0"
   },
   "keywords": []
 }

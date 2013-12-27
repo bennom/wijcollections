@@ -1,6 +1,12 @@
 'use strict';
 
 module.exports = function( grunt ) {
+    var banner = '/*! <%= pkg.name %> - v<%= pkg.version %> - ' +
+                '<%= grunt.template.today("yyyy-mm-dd") %>\n' +
+                '<%= pkg.homepage ? "* " + pkg.homepage + "\\n" : "" %>' +
+                '* Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %>;' +
+                ' Licensed <%= _.pluck(pkg.licenses, "type").join(", ") %> */\n';
+
     // load grunt tasks dynamicallay
     require( 'matchdep' ).filterDev( 'grunt-*' ).forEach( grunt.loadNpmTasks );
 
@@ -8,11 +14,19 @@ module.exports = function( grunt ) {
     grunt.initConfig( {
         // Metadata.
         pkg: grunt.file.readJSON( 'package.json' ),
-        banner: '/*! <%= pkg.name %> - v<%= pkg.version %> - ' +
-        '<%= grunt.template.today("yyyy-mm-dd") %>\n' +
-        '<%= pkg.homepage ? "* " + pkg.homepage + "\\n" : "" %>' +
-        '* Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %>;' +
-        ' Licensed <%= _.pluck(pkg.licenses, "type").join(", ") %> */\n',
+        banner: banner,
+
+        usebanner: {
+            bannerTop: {
+                options: {
+                    position: 'top',
+                    banner: banner
+                },
+                files: {
+                    src: ['dist/modules/**/*.js']
+                }
+            }
+        },
 
         bower: {
             install: {
@@ -65,24 +79,16 @@ module.exports = function( grunt ) {
         },
 
         clean: {
-            rjsOutput: ['dist/modules']
+            rjsOutput: ['dist']
         },
 
         requirejs: {
             compile: {
                 options: {
                     baseUrl: 'lib/',
-                    dir: 'dist/',
-                    optimize: 'uglify',
-                    modules: [
-                        {name: 'modules/private/AbstractCollection'},
-                        {name: 'modules/private/ListObject'},
-                        {name: 'modules/public/List'},
-                        {name: 'modules/public/Stack'},
-                        {name: 'modules/public/HashMap'},
-                        {name: 'modules/public/PolyfillFunctions'}
-                    ],
-                    findNestedDependencies: true
+                    dir: 'dist/modules/../',
+                    optimize: 'uglify2',
+                    preserveLicenseComments: false
                 }
             }
         },
@@ -118,8 +124,15 @@ module.exports = function( grunt ) {
     } );
 
     // Default task.
-    grunt.registerTask( 'default', ['jshint', 'qunit', 'clean:rjsOutput', 'requirejs', 'yuidoc'] );
+    grunt.registerTask( 'default', [
+        'jshint',
+        'qunit',
+        'clean:rjsOutput',
+        'requirejs',
+        'usebanner:bannerTop',
+        'yuidoc'
+    ] );
 
     // Travis CI
-    grunt.registerTask( 'travis', ['jshint', 'qunit'] );
+    grunt.registerTask( 'travis-ci', ['jshint', 'qunit'] );
 };

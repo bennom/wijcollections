@@ -1,9 +1,5 @@
-/*
- * wijcollections - Stack
- * https://github.com/webinfluenza/wijcollections
- *
- * Copyright (c) 2013 Benno Mielke
- * Licensed under the MIT license.
- */
+/*! wijcollections - v2.2.0 - 2013-12-27
+* https://github.com/webinfluenza/wijcollections
+* Copyright (c) 2013 Benno Mielke; Licensed MIT */
 
-define("wijcModules/public/Stack",["wijcModules/private/AbstractCollection","wijcModules/private/ListObject"],function(e,t){function n(){var e=this;e.stack=[],e.stackObject=new t}return n.prototype=new e,n.prototype.constructor=n,n.prototype.empty=function(){return this.stack.length===0},n.prototype.peek=function(){var e=this.stack.length,t=this.stackObject.get(this.stack[e-1]),n;return e<1?null:(t!==null?n=this.cloneObject(t.ref):n=this.stack[e-1],n)},n.prototype.pop=function(){var e=this.peek(),t=this.stack.length;return t<1?null:(this.stackObject.get(this.stack[t-1])!==null&&this.stackObject.remove(this.stack[t-1]),this.stack=this.stack.slice(0,-1),e)},n.prototype.push=function(e){return e===undefined?null:(this.needsHashing(e)?this.stack.push(this.stackObject.add(e)):this.stack.push(e),e)},n.prototype.search=function(e){var t=-1;return e===undefined?null:(this.needsHashing(e)?t=this.stack.lastIndexOf(this.getHash(e)):t=this.stack.lastIndexOf(e),t>-1?this.stack.length-t:-1)},n}),define("modules/public/Stack",function(){});
+define(["private/AbstractCollection","private/ListObject"],function(t,s){function e(){var t=this;t.stack=[],t.stackObject=new s}return e.prototype=new t,e.prototype.constructor=e,e.prototype.empty=function(){return 0===this.stack.length},e.prototype.peek=function(){var t,s=this.stack.length,e=this.stackObject.get(this.stack[s-1]);return 1>s?null:t=null!==e?this.cloneObject(e.ref):this.stack[s-1]},e.prototype.pop=function(){var t=this.peek(),s=this.stack.length;return 1>s?null:(null!==this.stackObject.get(this.stack[s-1])&&this.stackObject.remove(this.stack[s-1]),this.stack=this.stack.slice(0,-1),t)},e.prototype.push=function(t){return void 0===t?null:(this.needsHashing(t)?this.stack.push(this.stackObject.add(t)):this.stack.push(t),t)},e.prototype.search=function(t){var s=-1;return void 0===t?null:(s=this.needsHashing(t)?this.stack.lastIndexOf(this.getHash(t)):this.stack.lastIndexOf(t),s>-1?this.stack.length-s:-1)},e});

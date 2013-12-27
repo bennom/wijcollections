@@ -11,14 +11,19 @@
     <link rel="stylesheet" href="assets/qunit/qunit-1.12.0.css" media="screen">
     <script src="assets/qunit/qunit-1.12.0.js"></script>
 
-
-    <!-- require.js CDN -->
+    <!-- require.js -->
     <script src="assets/vendor/require.min.js"></script>
 
-    <!-- Load local lib and tests. -->
-    <script src="../lib/wijcollections.js"></script>
-
     <!--[if gt IE 8]><!--> <script src="../third_party/blanket/blanket.js" data-cover-flags="existingRequireJS branchTracking" data-cover-only="lib/modules/" data-cover-never="['third_party','test']"></script> <!--<![endif]-->
+
+    <script>
+        'use strict';
+
+        // configuring baseUrl to find the wijcollections
+        require.config( {
+            baseUrl: "../dist/modules/"
+        } );
+    </script>
 
     <script src="wijcollections_test.js"></script>
 

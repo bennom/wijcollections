@@ -1,4 +1,4 @@
-define( ['wijcModules/public/List'], function( List ) {
+define( ['public/List'], function( List ) {
     module( 'List', {
         setup: function() {
             this.list = new List();

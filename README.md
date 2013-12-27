@@ -35,6 +35,7 @@ Tested on all actual major Browsers. Internet Explorer 9+ is supported. There ar
 ### Release History
 Date | Version | Release Notes
 :------------|:-------:|:-----
+27.12.13 | 2.2.0 | Java ```hash()``` method for ```AC.getHash()```, API Doc, removed (Require.js) modules names
 18.12.13 | 2.1.0 | much faster hashing algorithm, ```HashMap.clone()```, tests & bug fixes
 13.12.13 | 2.0.0 | ```HashMap``` implementation, API changes, more tests
 01.11.13 | 1.2.0 | introducing ```Stack``` class
