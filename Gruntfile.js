@@ -61,6 +61,11 @@ module.exports = function( grunt ) {
             dist: {
                 src: '<%= concat.dist.dest %>',
                 dest: 'dist/<%= pkg.name %>.min.js'
+            },
+
+            notRequired: {
+                src: 'not-required/<%= pkg.name %>.js',
+                dest: 'not-required/<%= pkg.name %>-<%= pkg.version %>.min.js',
             }
         },
 
@@ -79,7 +84,8 @@ module.exports = function( grunt ) {
         },
 
         clean: {
-            rjsOutput: ['dist']
+            rjsOutput: ['dist'],
+            notRequired: ['not-required/*.min.js']
         },
 
         requirejs: {
@@ -130,7 +136,9 @@ module.exports = function( grunt ) {
         'clean:rjsOutput',
         'requirejs',
         'usebanner:bannerTop',
-        'yuidoc'
+        'yuidoc',
+        'clean:notRequired',
+        'uglify:notRequired'
     ] );
 
     // Travis CI
