@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <title>Wijcollections by webinfluenza</title>
+  </head>
+
+  <body>
+    <header>
+      <div class="inner">
+        <h1>Wijcollections</h1>
+        <h2>A Java like Collection Framework for JavaScript.</h2>
+        <a href="https://github.com/webinfluenza/wijcollections" class="button"><small>View project on</small>GitHub</a>
+      </div>
+    </header>
+
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+          <h1>
+<a name="wijcollections--" class="anchor" href="#wijcollections--"><span class="octicon octicon-link"></span></a>wijcollections <a href="https://travis-ci.org/webinfluenza/wijcollections"><img src="https://travis-ci.org/webinfluenza/wijcollections.png?branch=master" alt="Build Status"></a> <a href="https://waffle.io/webinfluenza/wijcollections"><img src="https://badge.waffle.io/webinfluenza/wijcollections.png?label=ready" alt="Stories in Ready"></a>
+</h1>
+
+<p>A Java like Collection Framework.</p>
+
+<h3>
+<a name="demo--playground" class="anchor" href="#demo--playground"><span class="octicon octicon-link"></span></a>Demo / Playground</h3>
+
+<p><a href="http://jsfiddle.net/webinfluenza/YM6vZ/" title="jsfiddle playground">Demo / Playground</a> - here you go. Feel free to fiddle around.</p>
+
+<h3>
+<a name="api-documentation" class="anchor" href="#api-documentation"><span class="octicon octicon-link"></span></a>API Documentation</h3>
+
+<p>... can be found <a href="http://www.webinfluenza.de/wijcollections/doc/" title="Official Documentation">here</a> (YUIDoc)</p>
+
+<h3>
+<a name="installation--usage" class="anchor" href="#installation--usage"><span class="octicon octicon-link"></span></a>Installation / Usage</h3>
+
+<h4>
+<a name="requirejs-version" class="anchor" href="#requirejs-version"><span class="octicon octicon-link"></span></a>RequireJS Version</h4>
+
+<p>Download or clone this repository and put the <code>dist/modules</code> folder in your desired location. Apply your config file to find this folder. In your JavaScript file you can simply require the modules of the <code>public</code> folder, e.g.:</p>
+
+<pre><code>require( ['public/List'], function( List ) {
+   var myList = new List();
+} );
+</code></pre>
+
+<h4>
+<a name="vanilla-js--non-requirejs-version" class="anchor" href="#vanilla-js--non-requirejs-version"><span class="octicon octicon-link"></span></a>Vanilla JS / Non Require.js Version</h4>
+
+<p>Download the <a href="https://raw.github.com/webinfluenza/wijcollections/master/not-required/wijcollections-2.2.0.min.js">compressed</a> version, include the file in your project and that's it. Easy-peasy :-)</p>
+
+<h3>
+<a name="actually-implemented-collections" class="anchor" href="#actually-implemented-collections"><span class="octicon octicon-link"></span></a>Actually implemented collections</h3>
+
+<ul>
+<li>(Array) List, <a href="http://www.webinfluenza.de/wijcollections/doc/classes/List.html" title="List API Documentation">Documentation</a>
+</li>
+<li>HashMap <a href="http://www.webinfluenza.de/wijcollections/doc/classes/HashMap.html" title="HashMap API Documentation">Documentation</a>
+</li>
+<li>Stack, <a href="http://www.webinfluenza.de/wijcollections/doc/classes/Stack.html" title="Stack API Documentation">Documentation</a>
+</li>
+</ul><h3>
+<a name="browser-compatibility" class="anchor" href="#browser-compatibility"><span class="octicon octicon-link"></span></a>Browser Compatibility</h3>
+
+<p>Tested on all actual major Browsers. Internet Explorer 9+ is supported. There are plans to also support Internet Explorer 8 in the future.</p>
+
+<h3>
+<a name="release-history" class="anchor" href="#release-history"><span class="octicon octicon-link"></span></a>Release History</h3>
+
+<table>
+<thead><tr>
+<th align="left">Date</th>
+<th align="center">Version</th>
+<th align="left">Release Notes</th>
+</tr></thead>
+<tbody>
+<tr>
+<td align="left">27.12.13</td>
+<td align="center">2.2.0</td>
+<td align="left">Java <code>hash()</code> method for <code>AC.getHash()</code>, API Doc, removed (Require.js) modules names</td>
+</tr>
+<tr>
+<td align="left">18.12.13</td>
+<td align="center">2.1.0</td>
+<td align="left">much faster hashing algorithm, <code>HashMap.clone()</code>, tests &amp; bug fixes</td>
+</tr>
+<tr>
+<td align="left">13.12.13</td>
+<td align="center">2.0.0</td>
+<td align="left">
+<code>HashMap</code> implementation, API changes, more tests</td>
+</tr>
+<tr>
+<td align="left">01.11.13</td>
+<td align="center">1.2.0</td>
+<td align="left">introducing <code>Stack</code> class</td>
+</tr>
+<tr>
+<td align="left">28.10.13</td>
+<td align="center">1.1.0</td>
+<td align="left">
+<code>List</code> implementation of <code>set()</code>
+</td>
+</tr>
+<tr>
+<td align="left">27.10.13</td>
+<td align="center">1.0.0</td>
+<td align="left">
+<code>List</code> production ready release</td>
+</tr>
+</tbody>
+</table>
+        </section>
+
+        <aside id="sidebar">
+          <a href="https://github.com/webinfluenza/wijcollections/zipball/master" class="button">
+            <small>Download</small>
+            .zip file
+          </a>
+          <a href="https://github.com/webinfluenza/wijcollections/tarball/master" class="button">
+            <small>Download</small>
+            .tar.gz file
+          </a>
+
+          <p class="repo-owner"><a href="https://github.com/webinfluenza/wijcollections"></a> is maintained by <a href="https://github.com/webinfluenza">webinfluenza</a>.</p>
+
+          <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
+        </aside>
+      </div>
+    </div>
+
+  
+  </body>
+</html>
